@@ -1,20 +1,4 @@
-import { ArrowRight } from './icons'
-import { HERO_BRANDS } from '@/lib/data'
-
-function HeroMarquee() {
-  const items = [...HERO_BRANDS, ...HERO_BRANDS]
-  return (
-    <div className="mt-24 w-full max-w-md overflow-hidden">
-      <div className="marquee-track">
-        {items.map((b, i) => (
-          <span key={i} className="mx-7 shrink-0 text-black/60 whitespace-nowrap" style={b.style}>
-            {b.name}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { ArrowRight } from "./icons";
 
 export default function HeroSection() {
   return (
@@ -22,7 +6,7 @@ export default function HeroSection() {
       <div className="max-w-[88rem] mx-auto w-full">
         <div
           className="relative w-full rounded-2xl overflow-hidden"
-          style={{ minHeight: 'min(720px, calc(100dvh - 96px))' }}
+          style={{ minHeight: "min(720px, calc(100dvh - 96px))" }}
         >
           {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video
@@ -37,17 +21,16 @@ export default function HeroSection() {
           <div className="relative z-10 flex flex-col items-start justify-start h-full p-6 pt-24 sm:p-10 sm:pt-28 md:p-12 md:pt-36">
             <h1
               className="text-black text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-4"
-              style={{ letterSpacing: '-0.04em' }}
+              style={{ letterSpacing: "-0.04em" }}
             >
               Agile minds.
               <br />
               Relentless solutions.
             </h1>
-            <p
-              className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter"
-            >
-              We&apos;re a small team of engineers, focused on building AI-native products,
-              automation systems, and production-grade software for ambitious teams.
+            <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">
+              We&apos;re a small team of engineers, focused on building
+              AI-native products, automation systems, and production-grade
+              software for ambitious teams.
             </p>
             <a
               href="#contact"
@@ -62,5 +45,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

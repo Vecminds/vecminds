@@ -32,6 +32,29 @@ const columns = [
   { title: "Company", links: ["About", "Team", "Careers", "Press", "Contact"] },
 ];
 
+const footerLinkMap: Record<string, string> = {
+  "Custom Software": "#services",
+  "AI & Automation": "#services",
+  "Web Apps": "#services",
+  "Mobile Apps": "#services",
+  "API & Integrations": "#services",
+  "Case studies": "#work",
+  Industries: "#work",
+  "Client stories": "#work",
+  "Open roles": "#team",
+  Process: "#process",
+  Insights: "#work",
+  Playbook: "#process",
+  "Tech radar": "#services",
+  Newsletter: "#contact",
+  "Brand kit": "#about",
+  About: "#about",
+  Team: "#team",
+  Careers: "#team",
+  Press: "#about",
+  Contact: "#contact",
+};
+
 export default function Footer() {
   const handleCalendlyClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (typeof window === "undefined") return;
@@ -131,7 +154,7 @@ export default function Footer() {
                 {col.links.map((l) => (
                   <li key={l}>
                     <a
-                      href="#"
+                      href={footerLinkMap[l]}
                       className="text-black/60 hover:text-black text-sm transition-colors duration-200"
                     >
                       {l}
