@@ -15,21 +15,15 @@ const columns = [
       "API & Integrations",
     ],
   },
-  {
-    title: "Work",
-    links: [
-      "Case studies",
-      "Industries",
-      "Client stories",
-      "Open roles",
-      "Process",
-    ],
-  },
+  // {
+  //   title: "Work",
+  //   links: ["Case studies", "Industries", "Client stories", "Process"],
+  // },
   {
     title: "Resources",
-    links: ["Insights", "Playbook", "Tech radar", "Newsletter", "Brand kit"],
+    links: ["Blogs", "Playbook", "Newsletter"],
   },
-  { title: "Company", links: ["About", "Team", "Careers", "Press", "Contact"] },
+  { title: "Company", links: ["About", "Team", "Careers", "Contact"] },
 ];
 
 const footerLinkMap: Record<string, string> = {
@@ -41,17 +35,13 @@ const footerLinkMap: Record<string, string> = {
   "Case studies": "#work",
   Industries: "#work",
   "Client stories": "#work",
-  "Open roles": "#team",
   Process: "#process",
-  Insights: "#work",
+  Blogs: "https://blog.vecminds.com/",
   Playbook: "#process",
-  "Tech radar": "#services",
   Newsletter: "#contact",
-  "Brand kit": "#about",
   About: "#about",
   Team: "#team",
   Careers: "#team",
-  Press: "#about",
   Contact: "#contact",
 };
 
@@ -116,8 +106,8 @@ export default function Footer() {
         </div>
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-10 mb-16">
-          <div className="col-span-2">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-10 mb-16">
+          <div className="shrink-0">
             <a href="#" className="flex items-center text-black mb-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -132,38 +122,46 @@ export default function Footer() {
               automation, and production-grade software for ambitious teams.
             </p>
             <div className="flex items-center gap-2">
-              {["X", "GH", "DC", "TG"].map((s) => (
+              {[
+                { label: "X", href: "https://x.com/vecminds" },
+                { label: "GH", href: "https://github.com/vecminds" },
+                { label: "Ln", href: "https://linkedin.com/company/vecminds" },
+              ].map((s) => (
                 <a
-                  key={s}
-                  href="#"
-                  aria-label={s}
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
                   className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center text-black/70 hover:bg-black hover:text-white hover:border-black transition-colors duration-200 text-xs font-medium"
                 >
-                  {s}
+                  {s.label}
                 </a>
               ))}
             </div>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-black text-sm font-medium mb-4">
-                {col.title}
-              </h4>
-              <ul className="flex flex-col gap-3">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href={footerLinkMap[l]}
-                      className="text-black/60 hover:text-black text-sm transition-colors duration-200"
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:flex md:justify-end  md:gap-10 lg:gap-20 gap-8 md:pr-[3.5rem]">
+            {columns.map((col) => (
+              <div key={col.title}>
+                <h4 className="text-black text-sm font-medium mb-4">
+                  {col.title}
+                </h4>
+                <ul className="flex flex-col gap-3">
+                  {col.links.map((l) => (
+                    <li key={l}>
+                      <a
+                        href={footerLinkMap[l]}
+                        className="text-black/60 hover:text-black text-sm transition-colors duration-200"
+                      >
+                        {l}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Giant wordmark */}
@@ -176,7 +174,7 @@ export default function Footer() {
             style={{
               letterSpacing: "-0.06em",
               textAlign: "center",
-              fontSize: "221px",
+              fontSize: "clamp(48px, 15vw, 221px)",
             }}
           >
             Vecminds
@@ -184,18 +182,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-6 border-t border-black/10">
-          <div className="flex items-center gap-6 text-xs text-black/50">
-            <span>© 2026 Vecminds Technologies Pvt. Ltd.</span>
-            {["Privacy", "Terms", "Cookies", "Disclosures"].map((l) => (
-              <a
-                key={l}
-                href="#"
-                className="hover:text-black transition-colors duration-200"
-              >
-                {l}
-              </a>
-            ))}
+        <div className="flex flex-col items-center md:flex-row md:items-center justify-between gap-3 pt-6 border-t border-black/10">
+          <div className="flex flex-col items-center sm:flex-row sm:items-center gap-2 sm:gap-6 text-xs text-black/50 text-center sm:text-left">
+            <span className="shrink-0">
+              © 2026 Vecminds Technologies Pvt. Ltd.
+            </span>
+            <div className="flex items-center justify-center flex-wrap gap-x-4 gap-y-2">
+              {["Privacy", "Terms", "Cookies", "Disclosures"].map((l) => (
+                <a
+                  key={l}
+                  href="#"
+                  className="hover:text-black transition-colors duration-200"
+                >
+                  {l}
+                </a>
+              ))}
+            </div>
           </div>
           <div className="flex items-center gap-4 text-xs text-black/50">
             <span>EN · Global</span>

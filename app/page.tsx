@@ -1,17 +1,17 @@
-import Navbar from '@/components/Navbar'
-import HeroSection from '@/components/HeroSection'
-import ServicesSection from '@/components/ServicesSection'
-import BackedBySection from '@/components/BackedBySection'
-import DeliveryModelsSection from '@/components/DeliveryModelsSection'
-import ProcessSection from '@/components/ProcessSection'
-import WorkSection from '@/components/WorkSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import ClientsSection from '@/components/ClientsSection'
-import AboutSection from '@/components/AboutSection'
-import TeamSection from '@/components/TeamSection'
-import FaqSection from '@/components/FaqSection'
-import Footer from '@/components/Footer'
-import ScrollReveal from '@/components/ScrollReveal'
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import TechStackSection from "@/components/TechStackSection";
+import DeliveryModelsSection from "@/components/DeliveryModelsSection";
+import ProcessSection from "@/components/ProcessSection";
+import WorkSection from "@/components/WorkSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ClientsSection from "@/components/ClientsSection";
+import AboutSection from "@/components/AboutSection";
+import TeamSection from "@/components/TeamSection";
+import FaqSection from "@/components/FaqSection";
+import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
@@ -22,16 +22,16 @@ export default function Home() {
         <HeroSection />
       </div>
       <ServicesSection />
-      <BackedBySection />
+      <TechStackSection />
       <DeliveryModelsSection />
       <ProcessSection />
-      <WorkSection />
-      <TestimonialsSection />
-      <ClientsSection />
+      {/* <WorkSection /> */}
+      {/* <TestimonialsSection /> */}
+      {/* <ClientsSection /> */}
       <AboutSection />
       <TeamSection />
       <FaqSection />
       <Footer />
     </div>
-  )
+  );
 }
