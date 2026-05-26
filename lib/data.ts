@@ -62,10 +62,10 @@ export const BACKERS: StackItem[] = [
     name: "Tailwind CSS",
     src: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
   },
-  {
-    name: "Redux",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
-  },
+  // {
+  //   name: "Redux",
+  //   src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
+  // },
 
   // Backend
   {
@@ -122,22 +122,22 @@ export const BACKERS: StackItem[] = [
     src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/openai.png",
     invert: true,
   },
-  {
-    name: "Claude API",
-    src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/claude-color.png",
-  },
+  // {
+  //   name: "Claude API",
+  //   src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/claude-color.png",
+  // },
   {
     name: "DeepSeek API",
     src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/deepseek-color.png",
   },
-  {
-    name: "Kimi API",
-    src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/kimi-color.png",
-  },
-  {
-    name: "Qwen API",
-    src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/qwen-color.png",
-  },
+  // {
+  //   name: "Kimi API",
+  //   src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/kimi-color.png",
+  // },
+  // {
+  //   name: "Qwen API",
+  //   src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/qwen-color.png",
+  // },
 
   // AI Frameworks
   {
@@ -152,21 +152,21 @@ export const BACKERS: StackItem[] = [
     name: "Hugging Face",
     src: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
   },
-  { name: "Ollama", src: "https://ollama.com/public/ollama.png" },
-  {
-    name: "OpenRouter",
-    src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/open-router.webp",
-  },
+  // { name: "Ollama", src: "https://ollama.com/public/ollama.png" },
+  // {
+  //   name: "OpenRouter",
+  //   src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/open-router.webp",
+  // },
 
   // Vector DB
-  {
-    name: "Pinecone",
-    src: "https://cdn.jsdelivr.net/gh/callback-io/allogo@main/public/logos/pinecone/icon.svg",
-  },
-  {
-    name: "Weaviate",
-    src: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/weaviate.svg",
-  },
+  // {
+  //   name: "Pinecone",
+  //   src: "https://cdn.jsdelivr.net/gh/callback-io/allogo@main/public/logos/pinecone/icon.svg",
+  // },
+  // {
+  //   name: "Weaviate",
+  //   src: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/weaviate.svg",
+  // },
   {
     name: "ChromaDB",
     src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/chroma.webp",
@@ -183,10 +183,10 @@ export const BACKERS: StackItem[] = [
     name: "Docker",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
   },
-  {
-    name: "Kubernetes",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg",
-  },
+  // {
+  //   name: "Kubernetes",
+  //   src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg",
+  // },
   {
     name: "AWS",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",

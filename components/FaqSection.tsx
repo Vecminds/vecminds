@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "What is your tech stack?",
-    a: "We work across the full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker, Kubernetes. For AI: OpenAI, Anthropic Claude, LangChain, LlamaIndex, and custom RAG pipelines on Pinecone, Weaviate, or pgvector. Automation: n8n and custom pipelines. We pick the right tool for the problem, not the one we're most comfortable with.",
+    a: "We work across the full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker. For AI: OpenAI, LangChain, LlamaIndex, and custom RAG pipelines on Pinecone, Weaviate, or pgvector. Automation: n8n and custom pipelines. We pick the right tool for the problem, not the one we're most comfortable with.",
   },
   {
     q: "How quickly can you get started?",
