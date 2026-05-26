@@ -14,6 +14,7 @@ export default function HeroSection() {
             muted
             loop
             playsInline
+            poster="/hero-poster.jpg"
             className="object-cover absolute inset-0 w-full h-full"
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4"
           />
@@ -32,9 +33,12 @@ export default function HeroSection() {
               className="text-black text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-4"
               style={{ letterSpacing: "-0.04em" }}
             >
-              Agile minds.
-              <br />
-              Relentless solutions.
+              <span className="sr-only">Vecminds Technologies — AI &amp; Software Engineering Studio for Ambitious Teams</span>
+              <span aria-hidden="true">
+                Agile minds.
+                <br />
+                Relentless solutions.
+              </span>
             </h1>
             <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">
               We&apos;re a small team of engineers, focused on building

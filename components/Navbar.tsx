@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, type MouseEvent } from "react";
+import Image from "next/image";
 import { ArrowRight, MenuIcon, CloseIcon } from "./icons";
 import { CALENDLY_URL } from "@/lib/integrations";
 
@@ -75,12 +76,14 @@ export default function Navbar() {
           className="flex items-center text-black shrink-0"
           onClick={closeMenu}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://ik.imagekit.io/ishwors/vt/Vecminds_Full_Logo.png"
-            alt="Vecminds"
-            className="h-7 sm:h-8 w-auto"
+          <Image
+            src="/Vecminds_Full_Logo.png"
+            alt="Vecminds Technologies"
+            width={176}
+            height={44}
+            className="w-auto"
             style={{ height: "44px" }}
+            priority
           />
         </a>
 

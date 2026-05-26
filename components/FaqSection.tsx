@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "What is your tech stack?",
-    a: "We work across the full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker. For AI: OpenAI, LangChain, LlamaIndex, and custom RAG pipelines on Pinecone, Weaviate, or pgvector. Automation: n8n and custom pipelines. We pick the right tool for the problem, not the one we're most comfortable with.",
+    a: "Full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker. AI: OpenAI, LangChain, LlamaIndex, RAG pipelines on Pinecone or pgvector. Automation via n8n. We choose the right tool for the problem, not the one we're most comfortable with.",
   },
   {
     q: "How quickly can you get started?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "What industries are you a good fit for?",
-    a: "The problems we're designed for tend to have real operational stakes — complex systems, meaningful workflows, actual data. Teams in FinTech, Healthcare, E-commerce, Logistics, and professional services tend to surface these. The deciding factor is always the nature of the challenge, not the vertical. If the system is complex and the team is serious about solving it, we want to hear from you.",
+    a: "Our best-fit problems have real operational stakes — complex systems, meaningful workflows, actual data. We work most often with FinTech, Healthcare, E-commerce, Logistics, and professional services teams. The deciding factor is always the challenge, not the vertical. If your system is complex and your team is serious about solving it, we want to hear from you.",
   },
   {
     q: "Do you work with non-technical founders?",
@@ -42,6 +42,16 @@ const faqs = [
     a: "Yes. After the initial build, we offer ongoing retainer arrangements — whether that's active feature development, monitoring, or light maintenance. We structure it around what's actually needed, not a one-size-fits-all package.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 function FaqItem({
   item,
@@ -119,46 +129,52 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-[#F5F5F5] px-6 py-24">
-      <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-        <div className="md:col-span-4 md:sticky md:top-12">
-          <p className="text-black/60 text-sm mb-2">FAQ</p>
-          <h2
-            className="text-black text-5xl md:text-6xl font-medium leading-none mb-6"
-            style={{ letterSpacing: "-0.04em" }}
-          >
-            Questions,
-            <br />
-            answered.
-          </h2>
-          <p className="text-black/60 text-base leading-relaxed max-w-sm mb-8 font-inter">
-            The questions most founders ask before kicking off a project. If
-            yours isn&apos;t here, just send us a note.
-          </p>
-          <a
-            href={CALENDLY_URL}
-            onClick={handleCalendlyClick}
-            className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
-          >
-            Book a call
-            <span className="bg-white rounded-full p-2 flex items-center justify-center">
-              <ArrowRight className="w-4 h-4 text-black" />
-            </span>
-          </a>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <section id="faq" className="bg-[#F5F5F5] px-6 py-24">
+        <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="md:col-span-4 md:sticky md:top-12">
+            <p className="text-black/60 text-sm mb-2">FAQ</p>
+            <h2
+              className="text-black text-5xl md:text-6xl font-medium leading-none mb-6"
+              style={{ letterSpacing: "-0.04em" }}
+            >
+              Questions,
+              <br />
+              answered.
+            </h2>
+            <p className="text-black/60 text-base leading-relaxed max-w-sm mb-8 font-inter">
+              The questions most founders ask before kicking off a project. If
+              yours isn&apos;t here, just send us a note.
+            </p>
+            <a
+              href={CALENDLY_URL}
+              onClick={handleCalendlyClick}
+              className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
+            >
+              Book a call
+              <span className="bg-white rounded-full p-2 flex items-center justify-center">
+                <ArrowRight className="w-4 h-4 text-black" />
+              </span>
+            </a>
+          </div>
 
-        <div className="md:col-span-8 flex flex-col gap-3">
-          {faqs.map((f, idx) => (
-            <FaqItem
-              key={f.q}
-              item={f}
-              index={idx}
-              open={openIdx === idx}
-              onToggle={() => setOpenIdx(openIdx === idx ? -1 : idx)}
-            />
-          ))}
+          <div className="md:col-span-8 flex flex-col gap-3">
+            {faqs.map((f, idx) => (
+              <FaqItem
+                key={f.q}
+                item={f}
+                index={idx}
+                open={openIdx === idx}
+                onToggle={() => setOpenIdx(openIdx === idx ? -1 : idx)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

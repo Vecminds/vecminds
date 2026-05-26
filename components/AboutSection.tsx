@@ -60,7 +60,7 @@ export default function AboutSection() {
               from product, platform, and AI backgrounds. We would rather ship
               one thing properly than juggle ten things badly — and we work
               directly with founders and operators, no account managers, no
-              layers, no theatre.
+              layers, no theatre. Founded in Nepal, serving clients across Globally.
             </p>
           </div>
         </div>

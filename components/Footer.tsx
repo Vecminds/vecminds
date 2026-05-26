@@ -1,6 +1,7 @@
 "use client";
 
 import { type MouseEvent } from "react";
+import Image from "next/image";
 import { ArrowRight } from "./icons";
 import { CALENDLY_URL } from "@/lib/integrations";
 
@@ -14,7 +15,7 @@ const columns = [
       "Mobile Apps",
       "API & Integrations",
     ],
-  },  
+  },
   // {
   //   title: "Work",
   //   links: ["Case studies", "Industries", "Client stories", "Process"],
@@ -46,6 +47,12 @@ const footerLinkMap: Record<string, string> = {
   Contact: "#contact",
   Blog: "https://blog.vecminds.com/",
 };
+
+const socials = [
+  { label: "X", ariaLabel: "X (Twitter)", href: "https://x.com/vecminds" },
+  { label: "GH", ariaLabel: "GitHub", href: "https://github.com/vecminds" },
+  { label: "Ln", ariaLabel: "LinkedIn", href: "https://linkedin.com/company/vecminds" },
+];
 
 export default function Footer() {
   const handleCalendlyClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -111,12 +118,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 mb-16">
           <div className="shrink-0">
             <a href="#" className="flex items-center text-black mb-5">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://ik.imagekit.io/ishwors/vt/Vecminds_Full_Logo.png"
-                alt="Vecminds"
-                className="h-8 w-auto"
-                style={{ height: "44px" }}
+              <Image
+                src="/Vecminds_Full_Logo.png"
+                alt="Vecminds Technologies"
+                width={176}
+                height={44}
+                style={{ height: "44px", width: "auto" }}
               />
             </a>
             <p className="text-black/60 text-sm leading-relaxed max-w-xs mb-6">
@@ -124,17 +131,13 @@ export default function Footer() {
               automation, and production-grade software for ambitious teams.
             </p>
             <div className="flex items-center gap-2">
-              {[
-                { label: "X", href: "https://x.com/vecminds" },
-                { label: "GH", href: "https://github.com/vecminds" },
-                { label: "Ln", href: "https://linkedin.com/company/vecminds" },
-              ].map((s) => (
+              {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
+                  aria-label={s.ariaLabel}
                   className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center text-black/70 hover:bg-black hover:text-white hover:border-black transition-colors duration-200 text-xs font-medium"
                 >
                   {s.label}
@@ -202,7 +205,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex items-center gap-4 text-xs text-black/50">
-            <span>EN · Global</span>
+            <span>NP · EN · Global</span>
           </div>
         </div>
       </div>

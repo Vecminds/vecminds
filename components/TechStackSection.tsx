@@ -3,13 +3,13 @@ import { BACKERS } from "@/lib/data";
 export default function TechStackSection() {
   const items = [...BACKERS, ...BACKERS];
   return (
-    <section className="bg-[#F5F5F5] px-6 py-12">
+    <section id="tech-stack" className="bg-[#F5F5F5] px-6 py-12">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
-        <div className="text-black/70 text-base leading-relaxed">
+        <h2 className="text-black/70 text-base leading-relaxed font-normal m-0">
           The stack we trust
           <br />
           in production, every day.
-        </div>
+        </h2>
         <div className="md:col-span-3 overflow-hidden">
           <div className="backers-track items-center">
             {items.map((b, i) => (

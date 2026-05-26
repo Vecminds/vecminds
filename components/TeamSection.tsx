@@ -96,16 +96,16 @@ const team = [
     role: "AI Engineer",
     specialty:
       "LLM pipelines, RAG systems, and quiet agents that do real work in the background.",
-    x: "https://x.com/",
-    linkedin: "https://linkedin.com/",
+    x: null,
+    linkedin: null,
   },
   {
     name: "Akash Shakya",
     role: "Full-Stack Software Engineer",
     specialty:
       "Web and mobile applications. Cares more about state machines than frameworks.",
-    x: "https://x.com/",
-    linkedin: "https://linkedin.com/",
+    x: null,
+    linkedin: null,
   },
   {
     name: "Diran Pradhan",

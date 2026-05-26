@@ -21,8 +21,70 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Vecminds Technologies — Software & AI Engineering, Built to Scale',
   description:
-    "A small team of engineers, focused on building AI-native products, automation systems, and production-grade software for ambitious teams.",
+    'A small team of engineers, focused on building AI-native products, automation systems, and production-grade software for ambitious teams.',
   icons: { icon: '/favicon.ico' },
+  alternates: { canonical: 'https://www.vecminds.com' },
+  openGraph: {
+    title: 'Vecminds Technologies — Software & AI Engineering, Built to Scale',
+    description:
+      'A small team of engineers building AI-native products, automation systems, and production-grade software for ambitious teams.',
+    url: 'https://www.vecminds.com',
+    siteName: 'Vecminds Technologies',
+    images: [
+      {
+        url: 'https://www.vecminds.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Vecminds Technologies — Software & AI Engineering Studio',
+      },
+    ],
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vecminds Technologies — Software & AI Engineering, Built to Scale',
+    description:
+      'A small team of engineers building AI-native products, automation systems, and production-grade software for ambitious teams.',
+    images: ['https://www.vecminds.com/og-image.png'],
+    site: '@vecminds',
+    creator: '@vecminds',
+  },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Vecminds Technologies',
+  legalName: 'Vecminds Technologies Pvt. Ltd.',
+  url: 'https://www.vecminds.com',
+  logo: 'https://www.vecminds.com/Vecminds_Full_Logo.png',
+  email: 'info@vecminds.com',
+  description:
+    'A software engineering studio specializing in AI-native product development, LLM automation systems, and full-stack software engineering for startups and growing teams.',
+  sameAs: [
+    'https://x.com/vecminds',
+    'https://github.com/vecminds',
+    'https://linkedin.com/company/vecminds',
+    'https://blog.vecminds.com',
+  ],
+  knowsAbout: [
+    'Custom Software Engineering',
+    'AI Development',
+    'LLM Applications',
+    'RAG Systems',
+    'Workflow Automation',
+    'Web Application Development',
+    'Mobile App Development',
+    'API Development',
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Vecminds Technologies',
+  url: 'https://www.vecminds.com',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +92,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <head>
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body>
         <noscript>
