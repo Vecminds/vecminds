@@ -1,11 +1,35 @@
 const principles = [
-  { n: '01', title: 'End-to-end ownership.', body: 'From first wireframe to production traffic, one team owns the system the whole way through. No handoffs, no orphaned code.' },
-  { n: '02', title: 'Boring tech, used well.', body: 'We pick proven tools and apply them carefully. Hype-driven choices are the most expensive ones to live with.' },
-  { n: '03', title: 'Small teams, deep ownership.', body: 'Two to four qualified engineers per engagement. The same people who write the plan write the code.' },
-  { n: '04', title: 'Ship something useful in week two.', body: 'No discovery purgatory. By the end of the second week there is a real, working piece of the system in your hands.' },
-  { n: '05', title: 'AI where it earns its place.', body: 'We use LLMs, RAG, and agents only where they reduce real operational cost — not as demo-day decoration.' },
-  { n: '06', title: 'No timesheets, no surprises.', body: 'Fixed-scope discoveries and monthly retainers. If scope shifts, we re-plan together — never invoice you a surprise.' },
-]
+  {
+    n: "01",
+    title: "End-to-end ownership.",
+    body: "From first wireframe to production traffic, one team owns the system the whole way through. No handoffs, no orphaned code.",
+  },
+  {
+    n: "02",
+    title: "Boring tech, used well.",
+    body: "We pick proven tools and apply them carefully. Hype-driven choices are the most expensive ones to live with.",
+  },
+  {
+    n: "03",
+    title: "Small teams, deep ownership.",
+    body: "Two to four qualified engineers per engagement. The same people who write the plan write the code.",
+  },
+  {
+    n: "04",
+    title: "Ship something useful in week two.",
+    body: "No discovery purgatory. By the end of the second week there is a real, working piece of the system in your hands.",
+  },
+  {
+    n: "05",
+    title: "AI where it earns its place.",
+    body: "We use LLMs, RAG, and agents only where they reduce real operational cost — not as demo-day decoration.",
+  },
+  {
+    n: "06",
+    title: "No timesheets, no surprises.",
+    body: "Fixed-scope discoveries and monthly retainers. If scope shifts, we re-plan together — never invoice you a surprise.",
+  },
+];
 
 export default function AboutSection() {
   return (
@@ -14,36 +38,57 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-12">
           <div className="md:col-span-5">
             <p className="text-black/60 text-sm mb-2">About</p>
-            <h2 className="text-black text-5xl md:text-6xl font-medium leading-none" style={{ letterSpacing: '-0.04em' }}>
+            <h2
+              className="text-black text-5xl md:text-6xl font-medium leading-none"
+              style={{ letterSpacing: "-0.04em" }}
+            >
               A studio,
               <br />
               not an agency.
             </h2>
           </div>
           <div className="md:col-span-7 space-y-6">
-            <p className="text-black text-2xl md:text-3xl leading-snug" style={{ letterSpacing: '-0.02em' }}>
-              We design, build, and run modern software systems — so the products you ship feel as good as they perform.
+            <p
+              className="text-black text-2xl md:text-3xl leading-snug"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              We design, build, and run modern software systems — so the
+              products you ship feel as good as they perform.
             </p>
             <p className="text-black/60 text-base md:text-lg leading-relaxed max-w-xl font-inter">
-              Vecminds Technologies was founded in 2023 by a small group of engineers and designers from product, platform, and AI backgrounds. We would rather ship one thing properly than juggle ten things badly — and we work directly with founders and operators, no account managers, no layers, no theatre.
+              Vecminds Technologies is a small group of engineers and designers
+              from product, platform, and AI backgrounds. We would rather ship
+              one thing properly than juggle ten things badly — and we work
+              directly with founders and operators, no account managers, no
+              layers, no theatre.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-black/10">
           {principles.map((p) => (
-            <article key={p.n} className="about-row relative p-7 md:p-8 border-b border-r border-black/10 flex flex-col gap-6">
-              <span className="text-black/40 text-sm font-medium tabular-nums">{p.n}</span>
+            <article
+              key={p.n}
+              className="about-row relative p-7 md:p-8 border-b border-r border-black/10 flex flex-col gap-6"
+            >
+              <span className="text-black/40 text-sm font-medium tabular-nums">
+                {p.n}
+              </span>
               <div>
-                <h3 className="text-black text-xl md:text-[22px] font-medium leading-snug mb-2" style={{ letterSpacing: '-0.02em' }}>
+                <h3
+                  className="text-black text-xl md:text-[22px] font-medium leading-snug mb-2"
+                  style={{ letterSpacing: "-0.02em" }}
+                >
                   {p.title}
                 </h3>
-                <p className="text-black/60 text-sm leading-relaxed">{p.body}</p>
+                <p className="text-black/60 text-sm leading-relaxed">
+                  {p.body}
+                </p>
               </div>
             </article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

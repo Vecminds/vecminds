@@ -198,10 +198,6 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex items-center gap-4 text-xs text-black/50">
-            <span className="inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Open for Q3 projects
-            </span>
             <span>EN · Global</span>
           </div>
         </div>
