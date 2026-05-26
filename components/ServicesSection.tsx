@@ -7,6 +7,7 @@ const services = [
     title: 'Custom Software Engineering',
     body: 'End-to-end product builds on modern stacks — from blank repo to a production system your team can run without us.',
     tags: ['Web apps', 'Mobile apps', 'AI-native products', 'APIs & integrations'],
+    link: 'https://vecminds.notion.site/Custom-Software-Engineering-36c43b2206fe80f39abcfa333cff7e9f',
   },
   {
     n: '02',
@@ -14,6 +15,7 @@ const services = [
     title: 'AI & Automation',
     body: 'LLM apps, retrieval pipelines, and automation workflows that earn their place — measured by hours saved, not demos given.',
     tags: ['LLM apps', 'RAG systems', 'Agents', 'Workflow automation'],
+    link: 'https://vecminds.notion.site/AI-Automation-Development-36c43b2206fe80418f68dbab79cc5dae',
   },
 ]
 
@@ -41,7 +43,10 @@ export default function ServicesSection() {
             return (
               <a
                 key={s.n}
-                href="#"
+                href={s.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Explore ${s.title}`}
                 className={`svc-card ${dark ? 'svc-card-dark' : 'svc-card-light'} group relative rounded-2xl p-6 sm:p-7 md:p-9 min-h-[360px] sm:min-h-[400px] md:min-h-[440px] flex flex-col justify-between overflow-hidden cursor-pointer`}
                 style={{
                   backgroundColor: dark ? '#2754D9' : '#FFFFFF',

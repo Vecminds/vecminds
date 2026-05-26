@@ -14,16 +14,19 @@ const columns = [
       "Mobile Apps",
       "API & Integrations",
     ],
-  },
+  },  
   // {
   //   title: "Work",
   //   links: ["Case studies", "Industries", "Client stories", "Process"],
   // },
   {
-    title: "Resources",
-    links: ["Blogs", "Playbook", "Newsletter"],
+    title: "Company",
+    links: ["About", "Team", "Contact"],
   },
-  { title: "Company", links: ["About", "Team", "Careers", "Contact"] },
+  {
+    title: "Resources",
+    links: ["Blog"],
+  },
 ];
 
 const footerLinkMap: Record<string, string> = {
@@ -36,13 +39,12 @@ const footerLinkMap: Record<string, string> = {
   Industries: "#work",
   "Client stories": "#work",
   Process: "#process",
-  Blogs: "https://blog.vecminds.com/",
   Playbook: "#process",
   Newsletter: "#contact",
   About: "#about",
   Team: "#team",
-  Careers: "#team",
   Contact: "#contact",
+  Blog: "https://blog.vecminds.com/",
 };
 
 export default function Footer() {

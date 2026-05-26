@@ -73,11 +73,6 @@ export const BACKERS: StackItem[] = [
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
   },
   {
-    name: "Express",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-    invert: true,
-  },
-  {
     name: "NestJS",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
   },
@@ -112,13 +107,13 @@ export const BACKERS: StackItem[] = [
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
   },
   {
-    name: "MS SQL",
+    name: "MS SQL Server",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
   },
 
   // AI Models / Providers
   {
-    name: "OpenAI API",
+    name: "OpenAI",
     src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/openai.png",
     invert: true,
   },
@@ -127,7 +122,7 @@ export const BACKERS: StackItem[] = [
   //   src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/claude-color.png",
   // },
   {
-    name: "DeepSeek API",
+    name: "DeepSeek",
     src: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/deepseek-color.png",
   },
   // {
@@ -178,7 +173,7 @@ export const BACKERS: StackItem[] = [
     src: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/n8n.svg",
   },
 
-  // Infra, Cloud & DevOps
+  // Infra & Cloud
   {
     name: "Docker",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",

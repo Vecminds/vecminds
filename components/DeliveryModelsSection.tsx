@@ -1,6 +1,6 @@
 import { ArrowRight } from './icons'
 
-const models = [
+const primaryModels = [
   {
     n: '01',
     title: 'Staff Augmentation',
@@ -9,22 +9,28 @@ const models = [
   },
   {
     n: '02',
-    title: 'Dedicated Offshore Teams',
-    tagline: 'A standing team that ships only your work.',
-    body: 'A ring-fenced pod — engineers, design, and a delivery lead — reporting into your org chart. Same faces every standup, full context on the product, none of the churn of a typical agency rotation.',
+    title: 'Managed Delivery',
+    tagline: 'Outcomes you brief, we own the execution.',
+    body: 'You define the outcome and the constraints. We own the plan, the team, and the weekly demos — you get a working system at the end, not a stack of timesheets. One delivery lead is your single point of contact.',
   },
-  {
-    n: '03',
-    title: 'Managed Outsourcing',
-    tagline: 'Outcomes you brief, we own the delivery.',
-    body: 'You define the outcome and the constraints. We own the plan, the team, and the weekly demos — you get a working system at the end, not a stack of timesheets. Senior delivery lead is the single throat to choke.',
-  },
-  {
-    n: '04',
-    title: 'Strategic Engineering Partnership',
-    tagline: 'A long arc — your engineering bench.',
-    body: "A multi-year partnership where we sit alongside your CTO on architecture, hiring, and platform direction. Equity-style commitment without the equity — we win when your engineering org compounds.",
-  },
+  // {
+  //   n: '02',
+  //   title: 'Dedicated Offshore Teams',
+  //   tagline: 'A standing team that ships only your work.',
+  //   body: 'A ring-fenced pod — engineers, design, and a delivery lead — reporting into your org chart. Same faces every standup, full context on the product, none of the churn of a typical agency rotation.',
+  // },
+  // {
+  //   n: '03',
+  //   title: 'Managed Outsourcing',
+  //   tagline: 'Outcomes you brief, we own the delivery.',
+  //   body: 'You define the outcome and the constraints. We own the plan, the team, and the weekly demos — you get a working system at the end, not a stack of timesheets. Senior delivery lead is the single throat to choke.',
+  // },
+  // {
+  //   n: '04',
+  //   title: 'Strategic Engineering Partnership',
+  //   tagline: 'A long arc — your engineering bench.',
+  //   body: "A multi-year partnership where we sit alongside your CTO on architecture, hiring, and platform direction. Equity-style commitment without the equity — we win when your engineering org compounds.",
+  // },
 ]
 
 export default function DeliveryModelsSection() {
@@ -35,21 +41,21 @@ export default function DeliveryModelsSection() {
           <div>
             <p className="text-black/60 text-sm mb-2">Delivery models</p>
             <h2 className="text-black text-5xl md:text-6xl font-medium leading-none" style={{ letterSpacing: '-0.04em' }}>
-              Four ways
+              Two ways
               <br />
               to work with us.
             </h2>
           </div>
           <p className="text-black/60 text-base max-w-sm leading-relaxed font-inter">
-            Same engineers, same standard — four shapes of engagement depending on how much of the wheel you want to hold.
+            Same engineers, same standard — two shapes of engagement depending on how much of the wheel you want to hold.
           </p>
         </div>
 
         <div className="rounded-2xl overflow-hidden bg-white border border-black/5">
-          {models.map((m, idx) => (
+          {primaryModels.map((m, idx) => (
             <a
               key={m.n}
-              href="#"
+              href="#contact"
               className={`dm-row group relative grid grid-cols-12 gap-6 px-6 sm:px-8 py-8 sm:py-10 ${idx > 0 ? 'border-t border-black/10' : ''}`}
             >
               <div
@@ -79,6 +85,21 @@ export default function DeliveryModelsSection() {
               </div>
             </a>
           ))}
+
+          {/* Lighter note for longer-arc engagements */}
+          <div className="border-t border-black/10 px-6 sm:px-8 py-5 flex items-center justify-between gap-4">
+            <p className="text-black/50 text-sm leading-relaxed">
+              For larger product teams we also take on{' '}
+              <span className="text-black/70">dedicated offshore pods</span> and{' '}
+              <span className="text-black/70">long-term strategic partnerships</span> — reach out to explore those.
+            </p>
+            <a
+              href="#contact"
+              className="shrink-0 text-sm font-medium text-black/60 hover:text-black transition-colors underline underline-offset-4"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
         </div>
       </div>
     </section>

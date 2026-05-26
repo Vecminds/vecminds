@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight } from "./icons";
+import { CALENDLY_URL } from "@/lib/integrations";
 
 const faqs = [
   {
@@ -25,8 +26,8 @@ const faqs = [
     a: "We typically respond with an initial read within 48 hours of first contact. Depending on current capacity, we can kick off discovery within one to two weeks of alignment. We're always upfront about our availability — no false urgency.",
   },
   {
-    q: "What industries have you worked in?",
-    a: "Business Process / Operation Technologies, FinTech, Healthcare, E-commerce, Logistics, and professional services, among others. The pattern we look for is complexity and ambition — not a specific vertical. If the problem is hard and the team is serious, we're interested.",
+    q: "What industries are you a good fit for?",
+    a: "The problems we're designed for tend to have real operational stakes — complex systems, meaningful workflows, actual data. Teams in FinTech, Healthcare, E-commerce, Logistics, and professional services tend to surface these. The deciding factor is always the nature of the challenge, not the vertical. If the system is complex and the team is serious about solving it, we want to hear from you.",
   },
   {
     q: "Do you work with non-technical founders?",
@@ -38,7 +39,7 @@ const faqs = [
   },
   {
     q: "Do you offer support after launch?",
-    a: "Yes. Most clients move into a retainer arrangement after the initial build — whether that's active feature development, monitoring, or light maintenance. We structure it around what's actually needed, not a one-size-fits-all package.",
+    a: "Yes. After the initial build, we offer ongoing retainer arrangements — whether that's active feature development, monitoring, or light maintenance. We structure it around what's actually needed, not a one-size-fits-all package.",
   },
 ];
 
@@ -108,6 +109,15 @@ function FaqItem({
 
 export default function FaqSection() {
   const [openIdx, setOpenIdx] = useState(0);
+
+  const handleCalendlyClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window === "undefined") return;
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+      event.preventDefault();
+      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+    }
+  };
+
   return (
     <section className="bg-[#F5F5F5] px-6 py-24">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
@@ -126,7 +136,8 @@ export default function FaqSection() {
             yours isn&apos;t here, just send us a note.
           </p>
           <a
-            href="#"
+            href={CALENDLY_URL}
+            onClick={handleCalendlyClick}
             className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
           >
             Book a call

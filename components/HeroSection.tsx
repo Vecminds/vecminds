@@ -18,6 +18,15 @@ export default function HeroSection() {
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4"
           />
 
+          {/* Scrim — keeps black text legible against any video frame */}
+          <div
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(245,245,245,0.72) 0%, rgba(245,245,245,0.38) 38%, transparent 62%)",
+            }}
+          />
+
           <div className="relative z-10 flex flex-col items-start justify-start h-full p-6 pt-24 sm:p-10 sm:pt-28 md:p-12 md:pt-36">
             <h1
               className="text-black text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-4"

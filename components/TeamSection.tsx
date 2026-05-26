@@ -1,17 +1,17 @@
 import { ArrowRight } from "./icons";
 
 const TEAM_PALETTE = [
-  {
-    bg: "#C9D2C0",
-    infoBg: "#D7E5CD",
-    text: "#0B1530",
-    accent: "rgba(11,21,48,0.10)",
-  },
+  
   {
     bg: "#2754D9",
     infoBg: "#3A7CE6",
     text: "#FFFFFF",
     accent: "rgba(255,255,255,0.12)",
+  },{
+    bg: "#C9D2C0",
+    infoBg: "#D7E5CD",
+    text: "#0B1530",
+    accent: "rgba(11,21,48,0.10)",
   },
   {
     bg: "#E4DED1",
@@ -78,17 +78,6 @@ function MemberPortrait({
       >
         {initials(name)}
       </span>
-      <span
-        className="absolute bottom-3 right-4 font-medium uppercase"
-        style={{
-          color: p.text,
-          opacity: 0.45,
-          fontSize: "10px",
-          letterSpacing: "0.18em",
-        }}
-      >
-        Portrait
-      </span>
     </div>
   );
 }
@@ -123,8 +112,8 @@ const team = [
     role: "Software Engineer",
     specialty:
       "APIs, integrations, and the infrastructure that keeps production calm.",
-    x: "https://x.com/",
-    linkedin: "https://linkedin.com/",
+    x: null,
+    linkedin: null,
   },
 ];
 
@@ -148,7 +137,10 @@ export default function TeamSection() {
               same people who write the plan write the code.
             </p>
             <a
-              href="#"
+              href="https://vecminds.notion.site/Careers-Vecminds-Technologies-36c43b2206fe806e8ce0c2c07325c591"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Join our team"
               className="inline-flex items-center gap-2 mt-10 px-6 py-3 bg-[#2754D9] text-white rounded-full text-sm font-medium hover:bg-black transition-colors"
             >
               Join our team
@@ -189,40 +181,44 @@ export default function TeamSection() {
                         </p>
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
-                        <a
-                          href={m.x}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="X"
-                          className={`w-7 h-7 flex items-center justify-center rounded-full ${dark ? "text-white/85 hover:bg-white/10" : "text-black/80 hover:bg-black/[0.06]"}`}
-                        >
-                          <svg
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            aria-hidden="true"
+                        {m.x && (
+                          <a
+                            href={m.x}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="X"
+                            className={`w-7 h-7 flex items-center justify-center rounded-full ${dark ? "text-white/85 hover:bg-white/10" : "text-black/80 hover:bg-black/[0.06]"}`}
                           >
-                            <path d="M18.244 2H21.5l-7.5 8.57L23 22h-7.27l-5.69-7.43L3.7 22H.44l8.04-9.18L1 2h7.46l5.13 6.78L18.244 2Zm-1.27 18h1.86L7.13 4H5.16l11.814 16Z" />
-                          </svg>
-                        </a>
-                        <a
-                          href={m.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="LinkedIn"
-                          className={`w-7 h-7 flex items-center justify-center rounded-full ${dark ? "text-white/85 hover:bg-white/10" : "text-black/80 hover:bg-black/[0.06]"}`}
-                        >
-                          <svg
-                            width="13"
-                            height="13"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            aria-hidden="true"
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path d="M18.244 2H21.5l-7.5 8.57L23 22h-7.27l-5.69-7.43L3.7 22H.44l8.04-9.18L1 2h7.46l5.13 6.78L18.244 2Zm-1.27 18h1.86L7.13 4H5.16l11.814 16Z" />
+                            </svg>
+                          </a>
+                        )}
+                        {m.linkedin && (
+                          <a
+                            href={m.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                            className={`w-7 h-7 flex items-center justify-center rounded-full ${dark ? "text-white/85 hover:bg-white/10" : "text-black/80 hover:bg-black/[0.06]"}`}
                           >
-                            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.47v6.27ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
-                          </svg>
-                        </a>
+                            <svg
+                              width="13"
+                              height="13"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.47v6.27ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
+                            </svg>
+                          </a>
+                        )}
                       </div>
                     </div>
                     <p
