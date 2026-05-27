@@ -22,7 +22,7 @@ export default function CalComButton({
     (async function () {
       const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal("ui", {
-        cssVarsPerTheme: { light: { "cal-brand": "#2754D9" } },
+        cssVarsPerTheme: { light: { "cal-brand": "#2754D9" }, dark: { "cal-brand": "#2754D9" } },
         hideEventTypeDetails: false,
         layout: CAL_LAYOUT,
       });
