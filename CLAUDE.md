@@ -33,7 +33,7 @@ TeamSection → FaqSection → Footer
 
 | File | Purpose |
 |---|---|
-| `lib/integrations.ts` | Calendly URL, GA and GTM IDs — all tracking/integration constants live here |
+| `lib/integrations.ts` | GA and GTM IDs — all tracking/integration constants live here |
 | `lib/data.ts` | Content arrays (`HERO_BRANDS`, `BACKERS` tech stack) and shared TypeScript interfaces (`Brand`, `StackItem`) |
 | `components/ScrollReveal.tsx` | Client component using `IntersectionObserver` to add `.reveal` / `.is-visible` classes for scroll-triggered fade-in animations |
 | `app/globals.css` | All custom CSS: marquee animations, `.svc-card` hover choreography, `.team-card` flex-accordion, `.smart-nav` hide/show, `.reveal` scroll animation, `.btn-shine` button effect |
@@ -46,7 +46,7 @@ TeamSection → FaqSection → Footer
 - **Fonts**: Manrope (primary, `font-sans`) and Inter (`font-inter`), loaded via `next/font/google` and exposed as CSS variables.
 - **Section IDs** for anchor links: `#services`, `#process`, `#team`, `#about`, `#contact` (Footer).
 - **Client components**: Only `Navbar`, `Footer`, and `ScrollReveal` use `'use client'`. All other components are server components (no interactivity needed).
-- **Calendly**: Loaded via `<Script>` in `layout.tsx`. `Navbar` and `Footer` call `window.Calendly.initPopupWidget()` on click; they fall back to the raw `CALENDLY_URL` if the widget hasn't loaded.
+- **Cal.com**: Integrated via `@calcom/embed-react`. `components/CalComButton.tsx` is a reusable client component that initialises the Cal.com popup on mount (`getCalApi`) and renders a `<button>` with the required `data-cal-*` attributes. `Navbar`, `Footer`, and `FaqSection` all use `<CalComButton>` for booking calls (namespace: `15min`, link: `vecminds/15min`).
 - **Analytics**: GA4 + GTM IDs are hardcoded in `lib/integrations.ts` and injected via `<Script>` tags in `layout.tsx`.
 - **Remote images**: `next.config.ts` allowlists `ik.imagekit.io`, `cdn.jsdelivr.net`, and `images.higgs.ai`. Tech stack icons are fetched from `cdn.jsdelivr.net/gh/devicons/devicon`.
 - **Scroll animations**: Add class `reveal` to any element; `ScrollReveal` picks it up automatically via a set of CSS selectors. The `.is-visible` class triggers the CSS transition defined in `globals.css`.

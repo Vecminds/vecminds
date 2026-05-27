@@ -137,15 +137,14 @@ export default function RootLayout({
         />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" />
 
         {/* SVG favicon (scales perfectly at any resolution) */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#2754D9" />
-
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -185,10 +184,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
         {/* Meta Pixel */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)                                                                                                

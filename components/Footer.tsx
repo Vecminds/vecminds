@@ -1,9 +1,8 @@
 "use client";
 
-import { type MouseEvent } from "react";
 import Image from "next/image";
 import { ArrowRight } from "./icons";
-import { CALENDLY_URL } from "@/lib/integrations";
+import CalComButton from "./CalComButton";
 
 const columns = [
   {
@@ -55,16 +54,6 @@ const socials = [
 ];
 
 export default function Footer() {
-  const handleCalendlyClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (typeof window === "undefined") return;
-    if (
-      window.Calendly &&
-      typeof window.Calendly.initPopupWidget === "function"
-    ) {
-      event.preventDefault();
-      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-    }
-  };
 
   return (
     <footer id="contact" className="bg-[#F5F5F5] px-4 sm:px-6 pt-12 pb-8">
@@ -93,16 +82,12 @@ export default function Footer() {
                 within 48 hours.
               </p>
               <div className="flex items-center gap-3">
-                <a
-                  href={CALENDLY_URL}
-                  onClick={handleCalendlyClick}
-                  className="inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200"
-                >
+                <CalComButton className="inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200">
                   Book a Call
                   <span className="bg-black rounded-full p-2 flex items-center justify-center">
                     <ArrowRight className="w-4 h-4 text-white" />
                   </span>
-                </a>
+                </CalComButton>
                 <a
                   href="mailto:info@vecminds.com"
                   className="inline-flex items-center text-white text-base font-medium px-6 py-3 rounded-full border border-white/20 hover:bg-white/5 transition-colors duration-200"

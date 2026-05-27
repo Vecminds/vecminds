@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef, type MouseEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, MenuIcon, CloseIcon } from "./icons";
-import { CALENDLY_URL } from "@/lib/integrations";
+import CalComButton from "./CalComButton";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -44,20 +44,6 @@ export default function Navbar() {
   }, [open]);
 
   const closeMenu = () => setOpen(false);
-  const handleCalendlyClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (typeof window === "undefined") return;
-    if (
-      window.Calendly &&
-      typeof window.Calendly.initPopupWidget === "function"
-    ) {
-      event.preventDefault();
-      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-    }
-  };
-  const handleMobileCalendlyClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    handleCalendlyClick(event);
-    closeMenu();
-  };
 
   const navClass = [
     "smart-nav",
@@ -101,13 +87,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href={CALENDLY_URL}
-            onClick={handleCalendlyClick}
-            className="btn-shine hidden sm:inline-flex bg-black text-white text-sm sm:text-base font-medium px-5 sm:px-7 py-2.5 rounded-full hover:bg-gray-800 transition-all duration-200 hover:scale-[1.03]"
-          >
+          <CalComButton className="btn-shine hidden sm:inline-flex bg-black text-white text-sm sm:text-base font-medium px-5 sm:px-7 py-2.5 rounded-full hover:bg-gray-800 transition-all duration-200 hover:scale-[1.03]">
             Book a Call
-          </a>
+          </CalComButton>
 
           <button
             type="button"
@@ -143,14 +125,13 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <a
-              href={CALENDLY_URL}
-              onClick={handleMobileCalendlyClick}
+            <CalComButton
               className="btn-shine mt-2 mb-1 mx-1 inline-flex items-center justify-center gap-3 bg-black text-white text-base font-medium px-6 py-3.5 rounded-xl hover:bg-gray-800 transition-colors duration-200 w-[calc(100%-0.5rem)]"
+              onClick={closeMenu}
             >
               Book a Call
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </CalComButton>
           </div>
         </div>
       )}

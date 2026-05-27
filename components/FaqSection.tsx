@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight } from "./icons";
-import { CALENDLY_URL } from "@/lib/integrations";
+import CalComButton from "./CalComButton";
 
 const faqs = [
   {
@@ -120,14 +120,6 @@ function FaqItem({
 export default function FaqSection() {
   const [openIdx, setOpenIdx] = useState(0);
 
-  const handleCalendlyClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (typeof window === "undefined") return;
-    if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
-      event.preventDefault();
-      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-    }
-  };
-
   return (
     <>
       <script
@@ -150,16 +142,12 @@ export default function FaqSection() {
               The questions most founders ask before kicking off a project. If
               yours isn&apos;t here, just send us a note.
             </p>
-            <a
-              href={CALENDLY_URL}
-              onClick={handleCalendlyClick}
-              className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
-            >
+            <CalComButton className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200">
               Book a call
               <span className="bg-white rounded-full p-2 flex items-center justify-center">
                 <ArrowRight className="w-4 h-4 text-black" />
               </span>
-            </a>
+            </CalComButton>
           </div>
 
           <div className="md:col-span-8 flex flex-col gap-3">
