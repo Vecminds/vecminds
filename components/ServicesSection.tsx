@@ -6,7 +6,7 @@ const services = [
     glyph: 'product',
     title: 'Custom Software Engineering',
     body: 'End-to-end product builds on modern stacks — from blank repo to a production system your team can run without us.',
-    tags: ['Web apps', 'Mobile apps', 'AI-native products', 'APIs & integrations'],
+    tags: ['Web Applications', 'Mobile Applications', 'AI-Native Products', 'APIs & Integrations'],
     link: 'https://vecminds.notion.site/Custom-Software-Engineering-36c43b2206fe80f39abcfa333cff7e9f',
   },
   {
@@ -14,7 +14,7 @@ const services = [
     glyph: 'ai',
     title: 'AI & Automation',
     body: 'LLM apps, retrieval pipelines, and automation workflows that earn their place — measured by hours saved, not demos given.',
-    tags: ['LLM apps', 'RAG systems', 'Agents', 'Workflow automation'],
+    tags: ['LLM/AI Applications', 'RAG Systems', 'Workflow Automation', 'AI Agents'],
     link: 'https://vecminds.notion.site/AI-Automation-Development-36c43b2206fe80418f68dbab79cc5dae',
   },
 ]
