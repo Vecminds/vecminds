@@ -33,23 +33,24 @@ export default function HeroSection() {
               className="text-black text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-4"
               style={{ letterSpacing: "-0.04em" }}
             >
-              <span className="sr-only">Vecminds Technologies — AI &amp; Software Engineering Studio for Ambitious Teams</span>
+              <span className="sr-only">Vecminds Technologies: AI and custom software development company for ambitious teams</span>
               <span aria-hidden="true">
-                Agile minds.
+                Software that ships.
                 <br />
-                Relentless solutions.
+                AI that pays off.
               </span>
             </h1>
             <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">
-              We&apos;re a small team of engineers, focused on building
-              AI-native products, automation systems, and production-grade
-              software for ambitious teams.
+              We&apos;re a small team of engineers. You bring the idea
+              or the messy problem. We build the custom software, AI, and
+              automation that ships fast and keeps paying off long after we
+              hand it over.
             </p>
             <a
               href="#contact"
               className="inline-flex items-center gap-3 bg-black text-white text-base md:text-lg font-medium pl-7 sm:pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
             >
-              Start a project
+              Start your project
               <span className="bg-white rounded-full p-2 flex items-center justify-center">
                 <ArrowRight className="w-5 h-5 text-black" />
               </span>

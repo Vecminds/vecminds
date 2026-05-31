@@ -78,7 +78,7 @@ export default function Footer() {
             <div className="flex flex-col md:items-end gap-6">
               <p className="text-white/60 text-base md:text-lg max-w-sm md:text-right">
                 Tell us what you&apos;re building. We&apos;ll come back with a
-                sharp plan, a small team, and a realistic timeline — usually
+                sharp plan, a small team, and a realistic timeline, usually
                 within 48 hours.
               </p>
               <div className="flex items-center gap-3">
@@ -112,8 +112,9 @@ export default function Footer() {
               />
             </a>
             <p className="text-black/60 text-sm leading-relaxed max-w-xs mb-6">
-              A focused engineering studio building AI-native products,
-              automation, and production-grade software for ambitious teams.
+              A focused software development company building AI-native
+              products, automation, and production-grade software for ambitious
+              teams.
             </p>
             <div className="flex items-center gap-2">
               {socials.map((s) => (

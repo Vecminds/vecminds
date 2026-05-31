@@ -4,32 +4,32 @@ const primaryModels = [
   {
     n: '01',
     title: 'Staff Augmentation',
-    tagline: 'Qualified engineers, embedded in your team.',
-    body: 'You set the roadmap and run the standups. We slot in vetted engineers who work inside your tools, your codebase, and your rituals — extending capacity without the management overhead of a new hire.',
+    tagline: 'Vetted engineers, embedded in your team.',
+    body: 'You keep the roadmap and run the standups. We drop in vetted engineers who work inside your tools, your codebase, and your rituals. You add real capacity in days, without the cost and slow ramp of a new hire.',
   },
   {
     n: '02',
     title: 'Managed Delivery',
-    tagline: 'Outcomes you brief, we own the execution.',
-    body: 'You define the outcome and the constraints. We own the plan, the team, and the weekly demos — you get a working system at the end, not a stack of timesheets. One delivery lead is your single point of contact.',
+    tagline: 'You brief the outcome, we own the delivery.',
+    body: 'You set the outcome and the constraints. We own the plan, the team, and the weekly demos. You end up with a working system, not a pile of timesheets, and one delivery lead you can always reach.',
   },
   // {
   //   n: '02',
   //   title: 'Dedicated Offshore Teams',
   //   tagline: 'A standing team that ships only your work.',
-  //   body: 'A ring-fenced pod — engineers, design, and a delivery lead — reporting into your org chart. Same faces every standup, full context on the product, none of the churn of a typical agency rotation.',
+  //   body: 'You get a ring-fenced pod of engineers, design, and a delivery lead reporting into your org chart. Same faces at every standup, full context on your product, and none of the churn you get from a typical agency rotation.',
   // },
   // {
   //   n: '03',
   //   title: 'Managed Outsourcing',
-  //   tagline: 'Outcomes you brief, we own the delivery.',
-  //   body: 'You define the outcome and the constraints. We own the plan, the team, and the weekly demos — you get a working system at the end, not a stack of timesheets. Senior delivery lead is the single throat to choke.',
+  //   tagline: 'You brief the outcome, we own the delivery.',
+  //   body: 'You set the outcome and the constraints. We own the plan, the team, and the weekly demos. You get a working system at the end, not a pile of timesheets, with one senior delivery lead who answers for all of it.',
   // },
   // {
   //   n: '04',
   //   title: 'Strategic Engineering Partnership',
-  //   tagline: 'A long arc — your engineering bench.',
-  //   body: "A multi-year partnership where we sit alongside your CTO on architecture, hiring, and platform direction. Equity-style commitment without the equity — we win when your engineering org compounds.",
+  //   tagline: 'A long-term partner, your engineering bench.',
+  //   body: 'We sit alongside your CTO on architecture, hiring, and platform direction across a multi-year partnership. Think of it as a committed engineering bench that wins when your team compounds, not one that bills by the hour.',
   // },
 ]
 
@@ -47,7 +47,7 @@ export default function DeliveryModelsSection() {
             </h2>
           </div>
           <p className="text-black/60 text-base max-w-sm leading-relaxed font-inter">
-            Same engineers, same standard — two shapes of engagement depending on how much of the wheel you want to hold.
+            Same engineers, same standard. Pick the model that fits how much of the wheel you want to hold, from staff augmentation to fully managed software delivery.
           </p>
         </div>
 
@@ -89,9 +89,9 @@ export default function DeliveryModelsSection() {
           {/* Lighter note for longer-arc engagements */}
           <div className="border-t border-black/10 px-6 sm:px-8 py-5 flex items-center justify-between gap-4">
             <p className="text-black/50 text-sm leading-relaxed">
-              For larger product teams we also take on{' '}
+              Scaling a bigger product team? We also run{' '}
               <span className="text-black/70">dedicated offshore pods</span> and{' '}
-              <span className="text-black/70">long-term strategic partnerships</span> — reach out to explore those.
+              <span className="text-black/70">long-term strategic partnerships</span>. Reach out and we&apos;ll map the right fit.
             </p>
             <a
               href="#contact"

@@ -2,22 +2,22 @@ const steps = [
   {
     n: "01",
     title: "Discovery",
-    body: "A short, paid sprint to map the problem, the system, and the smallest plan that proves it. No 60-page decks.",
+    body: "A short, paid sprint where we map your problem, your system, and the smallest plan that proves it works. You get clarity, not a 60-page deck.",
   },
   {
     n: "02",
     title: "Requirements & design",
-    body: "Architecture, data model, and integration points decided before code — so the build phase moves fast and stays calm.",
+    body: "We settle the architecture, data model, and API integration points before anyone writes code. So the build moves fast and stays calm.",
   },
   {
     n: "03",
     title: "Iterative build",
-    body: "Weekly demos, a shared backlog, and direct access to the engineers. The work is visible from week one.",
+    body: "Weekly demos, a shared backlog, and direct access to the engineers doing the work. You see real progress from week one.",
   },
   {
     n: "04",
     title: "Ship & operate",
-    body: "We deploy, monitor, and improve. When it is time to hand over, we leave you a system your team can run without us.",
+    body: "We deploy, monitor, and keep improving. When you're ready to take over, you get a system your own team can run without us.",
   },
 ];
 
@@ -38,8 +38,8 @@ export default function ProcessSection() {
             </h2>
           </div>
           <p className="text-black/60 text-base max-w-sm leading-relaxed font-inter">
-            Four phases, designed for clarity and speed — from first
-            conversation to production handover.
+            Four clear phases that keep your project fast and predictable, from
+            our first conversation to a clean production handover.
           </p>
         </div>
 

@@ -20,18 +20,20 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vecminds.com"),
-  title: "Vecminds Technologies — Software & AI Engineering, Built to Scale",
+  title: "Vecminds Technologies | Custom Software & AI Development Company",
   description:
-    "A small team of engineers, focused on building AI-native products, automation systems, and production-grade software for ambitious teams.",
+    "We're a small team of engineers building custom software, AI, and automation that ships fast and keeps paying off. Tell us what you're building.",
   keywords: [
-    "software engineering",
-    "AI development",
+    "custom software development",
+    "software development company",
+    "AI development and automation",
     "LLM applications",
     "RAG systems",
-    "automation",
     "web app development",
     "mobile app development",
-    "Nepal software company",
+    "API integration",
+    "staff augmentation",
+    "managed software delivery",
     "Vecminds",
   ],
   authors: [{ name: "Vecminds Technologies", url: "https://www.vecminds.com" }],
@@ -47,9 +49,9 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "https://www.vecminds.com" },
   openGraph: {
-    title: "Vecminds Technologies — Software & AI Engineering, Built to Scale",
+    title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "A small team of engineers building AI-native products, automation systems, and production-grade software for ambitious teams.",
+      "A small team of engineers building custom software, AI, and automation that ships fast and keeps paying off for ambitious teams.",
     url: "https://www.vecminds.com",
     siteName: "Vecminds Technologies",
     images: [
@@ -57,7 +59,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Vecminds Technologies — Software & AI Engineering Studio",
+        alt: "Vecminds Technologies, a custom software and AI development company",
       },
     ],
     type: "website",
@@ -65,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vecminds Technologies — Software & AI Engineering, Built to Scale",
+    title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "A small team of engineers building AI-native products, automation systems, and production-grade software for ambitious teams.",
+      "A small team of engineers building custom software, AI, and automation that ships fast and keeps paying off for ambitious teams.",
     images: ["/og-image.png"],
     site: "@vecminds",
     creator: "@vecminds",
@@ -94,7 +96,7 @@ const organizationSchema = {
   logo: "https://www.vecminds.com/Vecminds_Full_Logo.png",
   email: "info@vecminds.com",
   description:
-    "A software engineering studio specializing in AI-native product development, LLM automation systems, and full-stack software engineering for startups and growing teams.",
+    "A software development company building AI-native products, LLM and automation systems, and full-stack custom software for startups and growing teams.",
   sameAs: [
     "https://x.com/vecminds",
     "https://github.com/vecminds",
@@ -102,8 +104,8 @@ const organizationSchema = {
     "https://blog.vecminds.com",
   ],
   knowsAbout: [
-    "Custom Software Engineering",
-    "AI Development",
+    "Custom Software Development",
+    "AI Development and Automation",
     "LLM Applications",
     "RAG Systems",
     "Workflow Automation",

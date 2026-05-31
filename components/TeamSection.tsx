@@ -133,8 +133,9 @@ export default function TeamSection() {
               doing the work.
             </h2>
             <p className="text-black/60 text-base leading-relaxed mt-6 max-w-sm font-inter">
-              A small group of engineers. No account managers, no layers — the
-              same people who write the plan write the code.
+              A small group of quality engineers. No account managers, no
+              layers. The same people who write the plan write the code, and
+              you talk to them directly.
             </p>
             <a
               href="https://vecminds.notion.site/Careers-Vecminds-Technologies-36c43b2206fe806e8ce0c2c07325c591"

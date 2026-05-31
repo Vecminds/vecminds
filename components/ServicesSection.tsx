@@ -4,16 +4,16 @@ const services = [
   {
     n: '01',
     glyph: 'product',
-    title: 'Custom Software Engineering',
-    body: 'End-to-end product builds on modern stacks — from blank repo to a production system your team can run without us.',
-    tags: ['Web Applications', 'Mobile Applications', 'AI-Native Products', 'APIs & Integrations'],
+    title: 'Custom Software Development',
+    body: 'You get an end-to-end product built on a modern stack. We take it from a blank repo to a live system your team can run without us, so you own it fully when we step back.',
+    tags: ['Web App Development', 'Mobile App Development', 'AI-Native Products', 'API Integration'],
     link: 'https://vecminds.notion.site/Custom-Software-Engineering-36c43b2206fe80f39abcfa333cff7e9f',
   },
   {
     n: '02',
     glyph: 'ai',
-    title: 'AI & Automation',
-    body: 'LLM apps, retrieval pipelines, and automation workflows that earn their place — measured by hours saved, not demos given.',
+    title: 'AI Development & Automation',
+    body: 'We build LLM apps, RAG pipelines, and automation that you measure in hours saved, not demos watched. If it does not cut real work, it does not ship.',
     tags: ['LLM/AI Applications', 'RAG Systems', 'Workflow Automation', 'AI Agents'],
     link: 'https://vecminds.notion.site/AI-Automation-Development-36c43b2206fe80418f68dbab79cc5dae',
   },
@@ -27,13 +27,13 @@ export default function ServicesSection() {
           <div>
             <p className="text-black/60 text-sm mb-2">Services</p>
             <h2 className="text-black text-5xl md:text-6xl font-medium leading-none" style={{ letterSpacing: '-0.04em' }}>
-              Two services.
+              Two things.
               <br />
-              One coherent system.
+              Done properly.
             </h2>
           </div>
           <p className="text-black/60 text-base max-w-sm leading-relaxed font-inter">
-            We do two things, deeply. Most engagements blend both — software you can ship, with AI woven in where it earns its keep.
+            We go deep on two services instead of dabbling in ten. Most projects use both: custom software you can ship, with AI built in only where it pulls its weight.
           </p>
         </div>
 

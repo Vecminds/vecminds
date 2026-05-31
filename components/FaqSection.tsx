@@ -7,39 +7,39 @@ import CalComButton from "./CalComButton";
 const faqs = [
   {
     q: "What kinds of projects do you take on?",
-    a: "Three shapes: building AI-native products and platforms from scratch, embedding automation and intelligence into operations-heavy businesses, and modernizing production codebases that have outgrown their original architecture. We don't take on pure design, SEO, or marketing work.",
+    a: "Three kinds. We build AI-native products and platforms from scratch, add automation and AI into operations-heavy businesses, and modernize production codebases that have outgrown their original architecture. We don't do pure design, SEO, or marketing work.",
   },
   {
     q: "How is an engagement structured?",
-    a: "We start with a focused discovery phase to map your problem clearly, then move into iterative build cycles. You get regular demos, a shared backlog, and direct access to the engineers doing the work — no account managers, no layers of process in between.",
+    a: "We start with a focused discovery phase to map your problem clearly, then move into short build cycles. You get regular demos, a shared backlog, and direct access to the engineers doing the work. No account managers, no layers of process in the way.",
   },
   {
     q: "What does pricing look like?",
-    a: "Discovery is a fixed fee. Build work is priced as a monthly engagement for a dedicated team, scoped per cycle. No timesheets, no surprise change-orders — if scope shifts, we re-plan together and stay transparent throughout.",
+    a: "Discovery is a fixed fee. The build is priced as a monthly engagement for a dedicated team, scoped one cycle at a time. No timesheets and no surprise change-orders. If the scope shifts, we re-plan it with you first and stay transparent the whole way.",
   },
   {
     q: "What is your tech stack?",
-    a: "Full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker. AI: OpenAI, LangChain, LlamaIndex, RAG pipelines on Pinecone or pgvector. Automation via n8n. We choose the right tool for the problem, not the one we're most comfortable with.",
+    a: "A full modern stack. Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python (FastAPI), NestJS, .NET. Data: PostgreSQL, MongoDB, Redis, Supabase. Cloud: AWS, Vercel, Docker. AI: OpenAI, LangChain, LlamaIndex, and RAG pipelines on Pinecone or pgvector, with automation via n8n. We pick the right tool for your problem, not the one we happen to like best.",
   },
   {
     q: "How quickly can you get started?",
-    a: "We typically respond with an initial read within 48 hours of first contact. Depending on current capacity, we can kick off discovery within one to two weeks of alignment. We're always upfront about our availability — no false urgency.",
+    a: "We usually send an initial read within 48 hours of your first message. Depending on current capacity, we can kick off discovery within one to two weeks of agreeing on scope. We're always upfront about availability, so you'll never get false urgency from us.",
   },
   {
     q: "What industries are you a good fit for?",
-    a: "Our best-fit problems have real operational stakes — complex systems, meaningful workflows, actual data. We work most often with FinTech, Healthcare, E-commerce, Logistics, and professional services teams. The deciding factor is always the challenge, not the vertical. If your system is complex and your team is serious about solving it, we want to hear from you.",
+    a: "We do our best work on problems with real operational stakes: complex systems, meaningful workflows, and actual data. We work most often with FinTech, Healthcare, E-commerce, Logistics, and professional services teams. The deciding factor is the challenge, not the vertical. If your system is complex and your team is serious about solving it, we'd like to hear from you.",
   },
   {
     q: "Do you work with non-technical founders?",
-    a: "Often. We translate fuzzy product ideas into shippable specs, push back where it matters, and only build what survives that pressure. You stay close to the work without needing to read pull requests.",
+    a: "Often. We turn fuzzy product ideas into clear, shippable specs, push back where it matters, and only build what survives that pressure. You stay close to the work without ever needing to read a pull request.",
   },
   {
     q: "Can you take over an existing codebase?",
-    a: "Yes. We start with a code and architecture audit, ship a stabilization plan early, and rebuild incrementally — never a full rewrite unless the math actually justifies it.",
+    a: "Yes. We start with a code and architecture audit, ship an early stabilization plan, and rebuild step by step. We won't push a full rewrite unless the numbers genuinely justify it.",
   },
   {
     q: "Do you offer support after launch?",
-    a: "Yes. After the initial build, we offer ongoing retainer arrangements — whether that's active feature development, monitoring, or light maintenance. We structure it around what's actually needed, not a one-size-fits-all package.",
+    a: "Yes. After the initial build, we offer ongoing retainers, whether that's active feature development, monitoring, or light maintenance. We shape the support around what you actually need, not a one-size-fits-all package.",
   },
 ];
 
@@ -139,8 +139,8 @@ export default function FaqSection() {
               answered.
             </h2>
             <p className="text-black/60 text-base leading-relaxed max-w-sm mb-8 font-inter">
-              The questions most founders ask before kicking off a project. If
-              yours isn&apos;t here, just send us a note.
+              The questions most founders ask us before starting a project. If
+              yours isn&apos;t here, send us a note and we&apos;ll answer it.
             </p>
             <CalComButton className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200">
               Book a call

@@ -2,32 +2,32 @@ const principles = [
   {
     n: "01",
     title: "End-to-end ownership.",
-    body: "From first wireframe to production traffic, one team owns the system the whole way through. No handoffs, no orphaned code.",
+    body: "One team owns your system from first wireframe to live production traffic. No handoffs, no orphaned code, no finger-pointing.",
   },
   {
     n: "02",
     title: "Boring tech, used well.",
-    body: "We pick proven tools and apply them carefully. Hype-driven choices are the most expensive ones to live with.",
+    body: "We pick proven tools and use them carefully. Hype-driven choices are the ones that cost you the most to live with later.",
   },
   {
     n: "03",
     title: "Small teams, deep ownership.",
-    body: "Two to four qualified engineers per engagement. The same people who write the plan write the code.",
+    body: "You get two to four engineers per project. The same people who write the plan write the code.",
   },
   {
     n: "04",
-    title: "Ship something useful in week two.",
-    body: "No discovery purgatory. By the end of the second week there is a real, working piece of the system in your hands.",
+    title: "Something useful by week two.",
+    body: "No discovery purgatory. By the end of week two you'll have a real, working piece of the system in your hands.",
   },
   {
     n: "05",
     title: "AI where it earns its place.",
-    body: "We use LLMs, RAG, and agents only where they reduce real operational cost — not as demo-day decoration.",
+    body: "We add LLMs, RAG, and AI agents only where they cut real operational cost for you, never as demo-day decoration.",
   },
   {
     n: "06",
     title: "No timesheets, no surprises.",
-    body: "Fixed-scope discoveries and monthly retainers. If scope shifts, we re-plan together — never invoice you a surprise.",
+    body: "Fixed-scope discovery and clear monthly retainers. If the scope shifts, we re-plan together first. You never get a surprise invoice.",
   },
 ];
 
@@ -52,15 +52,16 @@ export default function AboutSection() {
               className="text-black text-2xl md:text-3xl leading-snug"
               style={{ letterSpacing: "-0.02em" }}
             >
-              We design, build, and run modern software systems — so the
+              We design, build, and run modern software systems, so the
               products you ship feel as good as they perform.
             </p>
             <p className="text-black/60 text-base md:text-lg leading-relaxed max-w-xl font-inter">
-              Vecminds Technologies is a small group of engineers and designers
-              from product, platform, and AI backgrounds. We would rather ship
-              one thing properly than juggle ten things badly — and we work
-              directly with founders and operators, no account managers, no
-              layers, no theatre. Founded in Nepal, serving clients across Globally.
+              Vecminds Technologies is a small software development company of
+              engineers and designers from product, platform, and AI
+              backgrounds. We&apos;d rather ship one thing properly than juggle ten
+              things badly. You work directly with the people building your
+              product: no account managers, no layers, no theatre. We partner
+              with founders and operators worldwide.
             </p>
           </div>
         </div>
