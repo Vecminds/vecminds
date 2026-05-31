@@ -1,4 +1,5 @@
 import { ArrowRight } from "./icons";
+import { TRUST_STATS } from "./TrustStripSection";
 
 export default function HeroSection() {
   return (
@@ -46,15 +47,45 @@ export default function HeroSection() {
               automation that ships fast and keeps paying off long after we
               hand it over.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-black text-white text-base md:text-lg font-medium pl-7 sm:pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
-            >
-              Start your project
-              <span className="bg-white rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-5 h-5 text-black" />
-              </span>
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 bg-black text-white text-base md:text-lg font-medium pl-7 sm:pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
+              >
+                Start your project
+                <span className="bg-white rounded-full p-2 flex items-center justify-center">
+                  <ArrowRight className="w-5 h-5 text-black" />
+                </span>
+              </a>
+              {/* <a
+                href="#testimonials"
+                className="inline-flex items-center gap-2 text-black text-base md:text-lg font-medium px-6 py-3.5 rounded-full border border-black/20 bg-white/80 hover:bg-white transition-colors duration-200"
+              >
+                See our work
+              </a> */}
+            </div>
+
+            {/* Trust strip — compact proof under the CTAs */}
+            <div className="mt-7 inline-flex items-center gap-x-5 gap-y-2 flex-wrap bg-white/65 backdrop-blur-sm border border-black/10 rounded-xl px-5 py-3">
+              {TRUST_STATS.map((s, i) => (
+                <div key={s.label} className="flex items-center gap-5">
+                  {i > 0 && (
+                    <span aria-hidden="true" className="hidden sm:block w-px h-6 bg-black/15" />
+                  )}
+                  <div className="flex items-baseline gap-1.5">
+                    <span
+                      className="text-black font-semibold tabular-nums text-base"
+                      style={{ letterSpacing: "-0.02em" }}
+                    >
+                      {s.value}
+                    </span>
+                    <span className="text-black/60 text-xs leading-tight max-w-[7rem]">
+                      {s.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

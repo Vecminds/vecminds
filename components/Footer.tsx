@@ -97,6 +97,34 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Risk reversal */}
+          <div className="mt-10 pt-6 border-t border-white/15 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {[
+              "Start with a small, fixed-scope discovery",
+              "No long lock-in contracts",
+              "Code ownership matches your selected terms.",
+            ].map((point) => (
+              <span
+                key={point}
+                className="inline-flex items-center gap-2 text-white/75 text-sm"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4 h-4 shrink-0 text-white"
+                  aria-hidden="true"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {point}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Link columns */}
