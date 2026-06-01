@@ -14,6 +14,7 @@ declare global {
       showWidget?: () => void;
       onChatMaximized?: () => void;
       onChatMinimized?: () => void;
+      onUnreadCountChanged?: (count: number) => void;
       [key: string]: unknown;
     };
   }
@@ -21,6 +22,10 @@ declare global {
 
 const WHATSAPP_URL = "https://wa.me/977976638077";
 
+// Chrome renders position:fixed iframes as visible even when their parent has
+// display:none (the state hideWidget() puts the Tawk container into). We hide
+// only the small minimize-button iframe (≤70px wide). The proactive-engagement
+// notification is suppressed via the MutationObserver in layout.tsx instead.
 function hideTawkMinimizeIframe() {
   setTimeout(() => {
     document.querySelectorAll<HTMLIFrameElement>("iframe").forEach((iframe) => {
@@ -36,25 +41,54 @@ function hideTawkMinimizeIframe() {
   }, 150);
 }
 
+/** Red badge showing unread message count, positioned top-right of its parent. */
+function UnreadBadge({ count }: { count: number }) {
+  if (count === 0) return null;
+  return (
+    <span
+      className="pointer-events-none absolute -right-1.5 -top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold leading-none text-white ring-2 ring-white"
+      aria-label={`${count} unread message${count === 1 ? "" : "s"}`}
+    >
+      {count > 99 ? "99+" : count}
+    </span>
+  );
+}
+
 export default function FloatingActions() {
   const [open, setOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const atBottom = useScrolledToBottom(140);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Drive the Tawk.to chat from our own button: keep Tawk's launcher bubble
+  // hidden at all times and mirror its open/close state + unread count into React.
   useEffect(() => {
     window.Tawk_API = window.Tawk_API || {};
+
     window.Tawk_API.onChatMaximized = () => {
       window.Tawk_API?.hideWidget?.();
       hideTawkMinimizeIframe();
       setChatOpen(true);
+      setUnreadCount(0); // clear badge — user is now reading the messages
     };
+
     window.Tawk_API.onChatMinimized = () => {
       window.Tawk_API?.hideWidget?.();
       setChatOpen(false);
     };
+
+    window.Tawk_API.onUnreadCountChanged = (count: number) => {
+      // Only show badge when the chat panel is not already open
+      setChatOpen((isOpen) => {
+        if (!isOpen) setUnreadCount(count);
+        return isOpen;
+      });
+    };
   }, []);
 
+  // When chatOpen changes: collapse the expand menu and broadcast to siblings
+  // (ScrollToTopButton listens to this event to hide itself).
   useEffect(() => {
     if (chatOpen) setOpen(false);
     window.dispatchEvent(
@@ -62,6 +96,7 @@ export default function FloatingActions() {
     );
   }, [chatOpen]);
 
+  // Close on outside click or Escape.
   useEffect(() => {
     if (!open) return;
     const onClick = (e: MouseEvent) => {
@@ -90,6 +125,7 @@ export default function FloatingActions() {
       api.minimize?.();
     } else {
       setChatOpen(true);  // optimistic — don't wait for onChatMaximized
+      setUnreadCount(0);  // clear badge immediately on open
       hideTawkMinimizeIframe();
       api.maximize?.();
     }
@@ -98,7 +134,7 @@ export default function FloatingActions() {
   const closeDeferred = () => setTimeout(() => setOpen(false), 0);
 
   const actionClasses =
-    "flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-transform duration-200 hover:scale-110";
+    "relative flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-transform duration-200 hover:scale-110";
 
   // While chat is open: always keep the close button visible (ignore atBottom),
   // so the user is never stranded without a way to dismiss the panel.
@@ -107,6 +143,8 @@ export default function FloatingActions() {
   return (
     <div
       ref={containerRef}
+      // z-[2000000] when chatOpen so the × button floats above Tawk's
+      // full-screen mobile iframe (z-index ~1000003).
       className={`fixed right-4 sm:right-5 flex items-center gap-2 sm:gap-3 transition-all duration-200 ${
         chatOpen ? "z-[2000000]" : "z-50"
       } ${
@@ -117,6 +155,7 @@ export default function FloatingActions() {
       style={{ bottom: "calc(1.25rem + var(--sab))" }}
     >
       {chatOpen ? (
+        /* ── Chat is open: show ONLY the close-chat button ── */
         <button
           type="button"
           onClick={toggleChat}
@@ -142,32 +181,28 @@ export default function FloatingActions() {
         <>
           {/* Expanding action links (appear to the left of the toggle) */}
           <div
-            className={`flex items-center gap-3 transition-all duration-300 ${
+            className={`flex items-center gap-2 sm:gap-3 transition-all duration-300 ${
               open
                 ? "pointer-events-auto translate-x-0 opacity-100"
                 : "pointer-events-none translate-x-4 opacity-0"
             }`}
           >
-            {/* Chat Assistant */}
+            {/* Chat Assistant — badge appears here when menu is open */}
             <button
               type="button"
-              aria-label="Chat with our assistant"
+              aria-label={`Chat with our assistant${unreadCount > 0 ? ` (${unreadCount} unread)` : ""}`}
               title="Chat Assistant"
               onClick={toggleChat}
               className={`${actionClasses} bg-[#2754D9]`}
             >
-              <svg
-                className="pointer-events-none h-6 w-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png"
+                alt=""
                 aria-hidden="true"
-              >
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
+                className="pointer-events-none h-6 w-6 object-contain drop-shadow-sm"
+              />
+              <UnreadBadge count={unreadCount} />
             </button>
 
             {/* Book a Call */}
@@ -215,13 +250,19 @@ export default function FloatingActions() {
             </Link>
           </div>
 
-          {/* Main toggle button */}
+          {/* Main toggle button — badge appears here when menu is closed */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close contact menu" : "Open contact menu"}
+            aria-label={
+              open
+                ? "Close contact menu"
+                : unreadCount > 0
+                ? `Open contact menu (${unreadCount} unread)`
+                : "Open contact menu"
+            }
             aria-expanded={open}
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:shadow-xl"
+            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:shadow-xl"
           >
             <svg
               className={`pointer-events-none h-6 w-6 transition-transform duration-300 ${open ? "rotate-90" : ""}`}
@@ -242,6 +283,8 @@ export default function FloatingActions() {
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
               )}
             </svg>
+            {/* Badge on toggle when menu is collapsed */}
+            {!open && <UnreadBadge count={unreadCount} />}
           </button>
         </>
       )}
