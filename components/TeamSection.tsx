@@ -89,9 +89,9 @@ const team = [
     specialty:
       "3+ years building full-stack, backend-heavy products in React, .NET, Python, SaaS, RAG, and AI workflows, plus the messy product decisions in between.",
     x: null,
-    linkedin: "https://linkedin.com/in/ishwors",
-    github: "https://github.com/ishwors",
-    website: "https://ishwors.com.np",
+    linkedin: "https://linkedin.com/company/vecminds",
+    github: "https://github.com/vecminds",
+    website: null,
   },
   {
     name: "Anish Koju",

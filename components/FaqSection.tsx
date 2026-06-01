@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowRight } from "./icons";
 import CalComButton from "./CalComButton";
 
@@ -64,6 +64,24 @@ function FaqItem({
   onToggle: () => void;
   index: number;
 }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState(0);
+
+  // Measure the answer's real height so long answers (e.g. the tech-stack
+  // list) never clip on narrow screens where the text reflows taller.
+  useEffect(() => {
+    if (!open) {
+      setMaxH(0);
+      return;
+    }
+    const measure = () => {
+      if (contentRef.current) setMaxH(contentRef.current.scrollHeight);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [open]);
+
   return (
     <div
       className={`bg-white rounded-2xl border border-black/5 transition-colors duration-200 ${open ? "shadow-[0_1px_2px_rgba(0,0,0,0.04)]" : ""}`}
@@ -105,9 +123,9 @@ function FaqItem({
       </button>
       <div
         className="overflow-hidden transition-[max-height] duration-300 ease-out"
-        style={{ maxHeight: open ? "400px" : "0px" }}
+        style={{ maxHeight: open ? maxH : 0 }}
       >
-        <div className="px-8 pb-7 pl-[4.25rem]">
+        <div ref={contentRef} className="px-8 pb-7 pl-[4.25rem]">
           <p className="text-black/65 text-base md:text-lg leading-relaxed max-w-2xl font-inter">
             {item.a}
           </p>
@@ -142,12 +160,12 @@ export default function FaqSection() {
               The questions most founders ask us before starting a project. If
               yours isn&apos;t here, send us a note and we&apos;ll answer it.
             </p>
-            <CalComButton className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200">
+            {/* <CalComButton className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200">
               Book a call
               <span className="bg-white rounded-full p-2 flex items-center justify-center">
                 <ArrowRight className="w-4 h-4 text-black" />
               </span>
-            </CalComButton>
+            </CalComButton> */}
           </div>
 
           <div className="md:col-span-8 flex flex-col gap-3">

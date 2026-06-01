@@ -27,9 +27,9 @@ export default function Home() {
       <TechStackSection />
       <DeliveryModelsSection />
       <ProcessSection />
-      <WorkSection />
+      {/* <WorkSection />
       <TestimonialsSection />
-      <ClientsSection />
+      <ClientsSection /> */}
       <AboutSection />
       <TeamSection />
       <FaqSection />

@@ -95,16 +95,27 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const ORG_ID = "https://www.vecminds.com/#organization";
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": ORG_ID,
   name: "Vecminds Technologies",
   legalName: "Vecminds Technologies Pvt. Ltd.",
   url: "https://www.vecminds.com",
   logo: "https://www.vecminds.com/Vecminds_Full_Logo.png",
+  image: "https://www.vecminds.com/og-image.png",
   email: "info@vecminds.com",
   description:
     "A software development company building AI-native products, LLM and automation systems, and full-stack custom software for startups and growing teams.",
+  areaServed: "Worldwide",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "info@vecminds.com",
+    contactType: "sales",
+    availableLanguage: ["English", "Nepali"],
+  },
   sameAs: [
     "https://x.com/vecminds",
     "https://github.com/vecminds",
@@ -121,13 +132,40 @@ const organizationSchema = {
     "Mobile App Development",
     "API Development",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Software & AI Development Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Custom Software Development",
+          description:
+            "End-to-end product engineering on a modern stack — web apps, mobile apps, AI-native products, and API integration — built so your team can run it without us.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Development & Automation",
+          description:
+            "LLM applications, RAG pipelines, AI agents, and workflow automation that cut real operational work, not just demos.",
+        },
+      },
+    ],
+  },
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.vecminds.com/#website",
   name: "Vecminds Technologies",
   url: "https://www.vecminds.com",
+  inLanguage: "en-US",
+  publisher: { "@id": ORG_ID },
 };
 
 export default function RootLayout({

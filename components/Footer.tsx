@@ -103,7 +103,7 @@ export default function Footer() {
             {[
               "Start with a small, fixed-scope discovery",
               "No long lock-in contracts",
-              "Code ownership matches your selected terms.",
+              "You own the code, on terms agreed up front",
             ].map((point) => (
               <span
                 key={point}
@@ -206,17 +206,12 @@ export default function Footer() {
             <span className="shrink-0">
               © 2026 Vecminds Technologies Pvt. Ltd.
             </span>
-            <div className="flex items-center justify-center flex-wrap gap-x-4 gap-y-2">
-              {["Privacy", "Terms", "Cookies", "Disclosures"].map((l) => (
-                <a
-                  key={l}
-                  href="#"
-                  className="hover:text-black transition-colors duration-200"
-                >
-                  {l}
-                </a>
-              ))}
-            </div>
+            <a
+              href="mailto:info@vecminds.com"
+              className="hover:text-black transition-colors duration-200"
+            >
+              info@vecminds.com
+            </a>
           </div>
           <div className="flex items-center gap-4 text-xs text-black/50">
             <span>NP · EN · Global</span>
