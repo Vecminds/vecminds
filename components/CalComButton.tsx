@@ -11,12 +11,14 @@ interface CalComButtonProps {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  title?: string;
 }
 
 export default function CalComButton({
   className,
   children,
   onClick,
+  title,
 }: CalComButtonProps) {
   useEffect(() => {
     (async function () {
@@ -38,6 +40,7 @@ export default function CalComButton({
         useSlotsViewOnSmallScreen: "true",
       })}
       className={className}
+      title={title}
       onClick={onClick}
     >
       {children}

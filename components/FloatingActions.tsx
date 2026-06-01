@@ -208,6 +208,7 @@ export default function FloatingActions() {
             {/* Book a Call */}
             <CalComButton
               onClick={closeDeferred}
+              title="Book a Call"
               className={`${actionClasses} bg-[#0F172A]`}
             >
               <span className="sr-only">Book a call</span>
