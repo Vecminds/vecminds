@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
@@ -85,6 +85,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
+
+// viewport-fit=cover lets env(safe-area-inset-*) return real values on iOS
+// so fixed floating buttons clear the home-indicator bar.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const organizationSchema = {

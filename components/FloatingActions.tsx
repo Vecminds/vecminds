@@ -21,10 +21,6 @@ declare global {
 
 const WHATSAPP_URL = "https://wa.me/977976638077";
 
-// Chrome renders position:fixed iframes as visible even when their parent has
-// display:none (the state hideWidget() puts the Tawk container into). We hide
-// only the small minimize-button iframe (≤70px wide). The proactive-engagement
-// notification is suppressed via showWidget=no-op in layout.tsx instead.
 function hideTawkMinimizeIframe() {
   setTimeout(() => {
     document.querySelectorAll<HTMLIFrameElement>("iframe").forEach((iframe) => {
@@ -46,8 +42,6 @@ export default function FloatingActions() {
   const atBottom = useScrolledToBottom(140);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Drive the Tawk.to chat from our own button: keep Tawk's launcher bubble
-  // hidden at all times and mirror its open/close state into React.
   useEffect(() => {
     window.Tawk_API = window.Tawk_API || {};
     window.Tawk_API.onChatMaximized = () => {
@@ -61,8 +55,6 @@ export default function FloatingActions() {
     };
   }, []);
 
-  // When chatOpen changes: collapse the expand menu and broadcast to siblings
-  // (ScrollToTopButton listens to this event to hide itself).
   useEffect(() => {
     if (chatOpen) setOpen(false);
     window.dispatchEvent(
@@ -70,7 +62,6 @@ export default function FloatingActions() {
     );
   }, [chatOpen]);
 
-  // Close on outside click or Escape.
   useEffect(() => {
     if (!open) return;
     const onClick = (e: MouseEvent) => {
@@ -116,14 +107,16 @@ export default function FloatingActions() {
   return (
     <div
       ref={containerRef}
-      className={`fixed bottom-5 right-5 z-50 flex items-center gap-3 transition-all duration-200 ${
+      className={`fixed right-4 sm:right-5 flex items-center gap-2 sm:gap-3 transition-all duration-200 ${
+        chatOpen ? "z-[2000000]" : "z-50"
+      } ${
         hidden
           ? "pointer-events-none translate-y-2 opacity-0"
           : "opacity-100 translate-y-0"
       }`}
+      style={{ bottom: "calc(1.25rem + var(--sab))" }}
     >
       {chatOpen ? (
-        /* ── Chat is open: show ONLY the close-chat button ── */
         <button
           type="button"
           onClick={toggleChat}

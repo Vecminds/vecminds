@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* iOS safe-area bottom (home indicator). Requires viewport-fit=cover.
+     Falls back to 0 on non-notched devices / Android. */
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+
 html,
 body {
   font-family: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
