@@ -57,12 +57,12 @@ export default function HeroSection() {
                   <ArrowRight className="w-5 h-5 text-black" />
                 </span>
               </a>
-              {/* <a
+              <a
                 href="#testimonials"
                 className="inline-flex items-center gap-2 text-black text-base md:text-lg font-medium px-6 py-3.5 rounded-full border border-black/20 bg-white/80 hover:bg-white transition-colors duration-200"
               >
                 See our work
-              </a> */}
+              </a>
             </div>
 
             {/* Trust strip — compact proof under the CTAs */}

@@ -5,6 +5,7 @@ import { useScrolledToBottom } from "./useScrolledToBottom";
 
 export default function ScrollToTopButton() {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const atBottom = useScrolledToBottom(140);
 
   useEffect(() => {
@@ -16,11 +17,18 @@ export default function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Hide while Tawk chat panel is open.
+  useEffect(() => {
+    const handler = (e: Event) => setChatOpen((e as CustomEvent<boolean>).detail);
+    window.addEventListener("vecminds:chatopen", handler);
+    return () => window.removeEventListener("vecminds:chatopen", handler);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const visible = scrolledPastHero && !atBottom;
+  const visible = scrolledPastHero && !atBottom && !chatOpen;
 
   return (
     <button

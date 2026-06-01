@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
-import { GA_MEASUREMENT_ID, GTM_ID, META_PIXEL_ID } from "@/lib/integrations";
+import { GA_MEASUREMENT_ID, GTM_ID, META_PIXEL_ID, TAWK_SRC } from "@/lib/integrations";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -140,6 +140,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" />
+        <link rel="preconnect" href="https://embed.tawk.to" />
 
         {/* SVG favicon (scales perfectly at any resolution) */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -210,6 +211,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             alt=""
           />
         </noscript>
+        {/* Tawk.to live chat — launcher is hidden; opened via the Chat Assistant floating button */}
+        <Script id="tawk-to" strategy="afterInteractive">
+          {`var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+Tawk_API.customStyle={
+  visibility:{
+    desktop:{position:'br',xOffset:20,yOffset:96},
+    mobile:{position:'br',xOffset:12,yOffset:88}
+  }
+};
+Tawk_API.onLoad=function(){
+  Tawk_API.hideWidget();
+  // Block Tawk's proactive-engagement feature from ever re-showing the
+  // launcher bubble. We own the open/close interaction via our own button.
+  Tawk_API.showWidget=function(){};
+};
+// Also suppress the proactive notification before it appears.
+Tawk_API.onBeforeLoad=function(){
+  Tawk_API.showWidget=function(){};
+};
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='${TAWK_SRC}';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();`}
+        </Script>
         {children}
       </body>
     </html>
