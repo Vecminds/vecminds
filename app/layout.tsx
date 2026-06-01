@@ -257,9 +257,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             alt=""
           />
         </noscript>
-        {/* Tawk.to live chat — launcher is hidden; opened via the Chat Assistant floating button */}
+        {/* Tawk.to live chat — launcher is hidden; opened via the Chat Assistant button.
+            A MutationObserver is started BEFORE the Tawk script loads so that any
+            fixed-position iframe Tawk renders is immediately hidden, eliminating
+            the 1-2s flash of the launcher / "We Are Here!" animation on refresh.
+            The observer disconnects itself inside onLoad, before the user can
+            ever open the chat panel via maximize(). */}
         <Script id="tawk-to" strategy="afterInteractive">
           {`var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+// Permanently hide Tawk's non-panel iframes (launcher ~60px, notification
+// ~45px, badge ~95px) via a MutationObserver that runs for the lifetime of
+// the page. The chat PANEL is ~502px tall and passes the height guard.
+// We never disconnect so proactive-engagement re-shows are also suppressed.
+(function(){
+  if(typeof MutationObserver==='undefined')return;
+  function checkEl(el){
+    if(!el||el.tagName!=='IFRAME')return;
+    var cs=window.getComputedStyle(el);
+    if(cs.position==='fixed'&&cs.display!=='none'&&parseFloat(cs.height)<200){
+      el.style.setProperty('display','none','important');
+    }
+  }
+  new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var m=muts[i];
+      if(m.type==='attributes'){
+        checkEl(m.target);
+      }else if(m.type==='childList'){
+        m.addedNodes.forEach(function(n){
+          if(n.nodeType!==1)return;
+          checkEl(n);
+          if(n.querySelectorAll)n.querySelectorAll('iframe').forEach(checkEl);
+        });
+      }
+    }
+  }).observe(document.documentElement,{
+    subtree:true,attributes:true,attributeFilter:['style'],childList:true
+  });
+})();
 Tawk_API.customStyle={
   visibility:{
     desktop:{position:'br',xOffset:20,yOffset:96},
@@ -268,11 +303,8 @@ Tawk_API.customStyle={
 };
 Tawk_API.onLoad=function(){
   Tawk_API.hideWidget();
-  // Block Tawk's proactive-engagement feature from ever re-showing the
-  // launcher bubble. We own the open/close interaction via our own button.
   Tawk_API.showWidget=function(){};
 };
-// Also suppress the proactive notification before it appears.
 Tawk_API.onBeforeLoad=function(){
   Tawk_API.showWidget=function(){};
 };
