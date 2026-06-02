@@ -21,6 +21,7 @@ declare global {
 }
 
 const WHATSAPP_URL = "https://wa.me/977976638077";
+const UNREAD_KEY = "vecminds_tawk_unread";
 
 // Chrome renders position:fixed iframes as visible even when their parent has
 // display:none (the state hideWidget() puts the Tawk container into). We hide
@@ -61,6 +62,13 @@ export default function FloatingActions() {
   const atBottom = useScrolledToBottom(140);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Restore persisted count immediately on mount so the badge is visible
+  // right away on refresh — before Tawk even finishes loading.
+  useEffect(() => {
+    const saved = parseInt(localStorage.getItem(UNREAD_KEY) || "0", 10);
+    if (saved > 0) setUnreadCount(saved);
+  }, []);
+
   // Drive the Tawk.to chat from our own button: keep Tawk's launcher bubble
   // hidden at all times and mirror its open/close state + unread count into React.
   useEffect(() => {
@@ -70,7 +78,9 @@ export default function FloatingActions() {
       window.Tawk_API?.hideWidget?.();
       hideTawkMinimizeIframe();
       setChatOpen(true);
-      setUnreadCount(0); // clear badge — user is now reading the messages
+      // Clear badge + persisted count — user is now reading the messages.
+      setUnreadCount(0);
+      localStorage.removeItem(UNREAD_KEY);
     };
 
     window.Tawk_API.onChatMinimized = () => {
@@ -79,9 +89,14 @@ export default function FloatingActions() {
     };
 
     window.Tawk_API.onUnreadCountChanged = (count: number) => {
-      // Only show badge when the chat panel is not already open
+      // Only update badge when the chat panel is not already open.
       setChatOpen((isOpen) => {
-        if (!isOpen) setUnreadCount(count);
+        if (!isOpen) {
+          setUnreadCount(count);
+          // Persist so the badge survives a page refresh.
+          if (count > 0) localStorage.setItem(UNREAD_KEY, String(count));
+          else localStorage.removeItem(UNREAD_KEY);
+        }
         return isOpen;
       });
     };
@@ -126,6 +141,7 @@ export default function FloatingActions() {
     } else {
       setChatOpen(true);  // optimistic — don't wait for onChatMaximized
       setUnreadCount(0);  // clear badge immediately on open
+      localStorage.removeItem(UNREAD_KEY);
       hideTawkMinimizeIframe();
       api.maximize?.();
     }
@@ -134,7 +150,7 @@ export default function FloatingActions() {
   const closeDeferred = () => setTimeout(() => setOpen(false), 0);
 
   const actionClasses =
-    "relative flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-transform duration-200 hover:scale-110";
+    "relative flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-[opacity,transform] duration-200 ease-out hover:scale-110 active:scale-[0.97]";
 
   // While chat is open: always keep the close button visible (ignore atBottom),
   // so the user is never stranded without a way to dismiss the panel.
@@ -145,7 +161,7 @@ export default function FloatingActions() {
       ref={containerRef}
       // z-[2000000] when chatOpen so the × button floats above Tawk's
       // full-screen mobile iframe (z-index ~1000003).
-      className={`fixed right-4 sm:right-5 flex items-center gap-2 sm:gap-3 transition-all duration-200 ${
+      className={`fixed right-4 sm:right-5 flex items-center gap-2 sm:gap-3 transition-[opacity,transform] duration-200 ease-out ${
         chatOpen ? "z-[2000000]" : "z-50"
       } ${
         hidden
@@ -160,7 +176,7 @@ export default function FloatingActions() {
           type="button"
           onClick={toggleChat}
           aria-label="Close chat"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:shadow-xl"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-[transform] duration-200 ease-out hover:scale-110 hover:shadow-xl active:scale-[0.97]"
         >
           <svg
             className="pointer-events-none h-6 w-6"
@@ -180,20 +196,19 @@ export default function FloatingActions() {
         /* ── Normal state: expanding actions + main toggle ── */
         <>
           {/* Expanding action links (appear to the left of the toggle) */}
-          <div
-            className={`flex items-center gap-2 sm:gap-3 transition-all duration-300 ${
-              open
-                ? "pointer-events-auto translate-x-0 opacity-100"
-                : "pointer-events-none translate-x-4 opacity-0"
-            }`}
-          >
-            {/* Chat Assistant — badge appears here when menu is open */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Chat Assistant — stagger last (farthest from toggle) */}
             <button
               type="button"
               aria-label={`Chat with our assistant${unreadCount > 0 ? ` (${unreadCount} unread)` : ""}`}
               title="Chat Assistant"
               onClick={toggleChat}
-              className={`${actionClasses} bg-[#2754D9]`}
+              style={{ transitionDelay: open ? "120ms" : "0ms" }}
+              className={`${actionClasses} bg-[#2754D9] ${
+                open
+                  ? "pointer-events-auto translate-x-0 opacity-100"
+                  : "pointer-events-none translate-x-2 opacity-0"
+              }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -205,11 +220,16 @@ export default function FloatingActions() {
               <UnreadBadge count={unreadCount} />
             </button>
 
-            {/* Book a Call */}
+            {/* Book a Call — stagger middle */}
             <CalComButton
               onClick={closeDeferred}
               title="Book a Call"
-              className={`${actionClasses} bg-[#0F172A]`}
+              style={{ transitionDelay: open ? "60ms" : "0ms" }}
+              className={`${actionClasses} bg-[#0F172A] ${
+                open
+                  ? "pointer-events-auto translate-x-0 opacity-100"
+                  : "pointer-events-none translate-x-2 opacity-0"
+              }`}
             >
               <span className="sr-only">Book a call</span>
               <svg
@@ -229,7 +249,7 @@ export default function FloatingActions() {
               </svg>
             </CalComButton>
 
-            {/* WhatsApp */}
+            {/* WhatsApp — stagger first (closest to toggle) */}
             <Link
               href={WHATSAPP_URL}
               target="_blank"
@@ -237,7 +257,12 @@ export default function FloatingActions() {
               aria-label="Chat with us on WhatsApp"
               title="WhatsApp"
               onClick={close}
-              className={`${actionClasses} bg-[#25D366]`}
+              style={{ transitionDelay: open ? "0ms" : "0ms" }}
+              className={`${actionClasses} bg-[#25D366] ${
+                open
+                  ? "pointer-events-auto translate-x-0 opacity-100"
+                  : "pointer-events-none translate-x-2 opacity-0"
+              }`}
             >
               <svg
                 className="pointer-events-none h-6 w-6"
@@ -263,27 +288,42 @@ export default function FloatingActions() {
                 : "Open contact menu"
             }
             aria-expanded={open}
-            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:shadow-xl"
+            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#2754D9] text-white shadow-lg transition-[transform] duration-200 ease-out hover:scale-110 hover:shadow-xl active:scale-[0.97]"
           >
-            <svg
-              className={`pointer-events-none h-6 w-6 transition-transform duration-300 ${open ? "rotate-90" : ""}`}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              {open ? (
-                <>
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </>
-              ) : (
+            {/* Icon crossfade: chat bubble ↔ X */}
+            <span className="pointer-events-none relative h-6 w-6">
+              {/* Chat bubble — visible when closed */}
+              <svg
+                className={`absolute inset-0 h-6 w-6 transition-[opacity,transform] duration-200 ease-out ${
+                  open ? "opacity-0 scale-75" : "opacity-100 scale-100"
+                }`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              )}
-            </svg>
+              </svg>
+              {/* X / close — visible when open */}
+              <svg
+                className={`absolute inset-0 h-6 w-6 transition-[opacity,transform] duration-200 ease-out ${
+                  open ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-75 rotate-45"
+                }`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </span>
             {/* Badge on toggle when menu is collapsed */}
             {!open && <UnreadBadge count={unreadCount} />}
           </button>

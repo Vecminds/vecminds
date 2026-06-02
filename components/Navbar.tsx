@@ -81,13 +81,13 @@ export default function Navbar() {
               className="relative text-base text-gray-700 hover:text-black font-medium transition-colors duration-200 group"
             >
               {l.label}
-              <span className="absolute left-0 right-0 -bottom-1 h-[2px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+              <span className="absolute left-0 right-0 -bottom-1 h-[2px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-200 ease-out" />
             </a>
           ))}
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <CalComButton className="btn-shine hidden sm:inline-flex bg-black text-white text-sm sm:text-base font-medium px-5 sm:px-7 py-2.5 rounded-full hover:bg-gray-800 transition-all duration-200 hover:scale-[1.03]">
+          <CalComButton className="btn-shine hidden sm:inline-flex bg-black text-white text-sm sm:text-base font-medium px-5 sm:px-7 py-2.5 rounded-full hover:bg-gray-800 transition-[transform,background-color] duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]">
             Book a Call
           </CalComButton>
 
@@ -96,13 +96,12 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="md:hidden w-11 h-11 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors duration-200"
+            className="md:hidden w-11 h-11 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-[transform,background-color] duration-200 ease-out active:scale-[0.97]"
           >
-            {open ? (
-              <CloseIcon className="w-5 h-5" />
-            ) : (
-              <MenuIcon className="w-5 h-5" />
-            )}
+            <span className="relative w-5 h-5">
+              <MenuIcon className={`absolute inset-0 w-5 h-5 transition-[opacity,transform] duration-200 ease-out ${open ? "opacity-0 scale-75" : "opacity-100 scale-100"}`} />
+              <CloseIcon className={`absolute inset-0 w-5 h-5 transition-[opacity,transform] duration-200 ease-out ${open ? "opacity-100 scale-100" : "opacity-0 scale-75"}`} />
+            </span>
           </button>
         </div>
       </div>

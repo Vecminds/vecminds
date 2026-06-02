@@ -9,6 +9,7 @@ const CAL_LAYOUT = "month_view";
 
 interface CalComButtonProps {
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
   onClick?: () => void;
   title?: string;
@@ -16,6 +17,7 @@ interface CalComButtonProps {
 
 export default function CalComButton({
   className,
+  style,
   children,
   onClick,
   title,
@@ -40,6 +42,7 @@ export default function CalComButton({
         useSlotsViewOnSmallScreen: "true",
       })}
       className={className}
+      style={style}
       title={title}
       onClick={onClick}
     >
