@@ -34,6 +34,101 @@ export function CloseIcon({ className = 'w-5 h-5' }: { className?: string }) {
   )
 }
 
+export function DeliverableIcon({ kind, className = 'w-7 h-7' }: { kind: string; className?: string }) {
+  const common = {
+    className,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.6,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true,
+  }
+  switch (kind) {
+    case 'web':
+      return (
+        <svg {...common}>
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="6" y1="6.5" x2="7.5" y2="6.5" />
+          <line x1="9.5" y1="6.5" x2="11" y2="6.5" />
+        </svg>
+      )
+    case 'mobile':
+      return (
+        <svg {...common}>
+          <rect x="7" y="3" width="10" height="18" rx="2.4" />
+          <line x1="10.5" y1="18" x2="13.5" y2="18" />
+        </svg>
+      )
+    case 'ai-native':
+      return (
+        <svg {...common}>
+          <rect x="6" y="6" width="12" height="12" rx="2" />
+          <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
+          <line x1="9" y1="3" x2="9" y2="6" />
+          <line x1="15" y1="3" x2="15" y2="6" />
+          <line x1="9" y1="18" x2="9" y2="21" />
+          <line x1="15" y1="18" x2="15" y2="21" />
+          <line x1="3" y1="9" x2="6" y2="9" />
+          <line x1="3" y1="15" x2="6" y2="15" />
+          <line x1="18" y1="9" x2="21" y2="9" />
+          <line x1="18" y1="15" x2="21" y2="15" />
+        </svg>
+      )
+    case 'api':
+      return (
+        <svg {...common}>
+          <polyline points="8 7 4 12 8 17" />
+          <polyline points="16 7 20 12 16 17" />
+          <line x1="13.5" y1="5" x2="10.5" y2="19" />
+        </svg>
+      )
+    case 'llm':
+      return (
+        <svg {...common}>
+          <path d="M5 4 h14 a2 2 0 0 1 2 2 v8 a2 2 0 0 1 -2 2 h-8 l-4 3 v-3 h-2 a2 2 0 0 1 -2 -2 v-8 a2 2 0 0 1 2 -2 z" />
+          <line x1="8" y1="9" x2="16" y2="9" />
+          <line x1="8" y1="12" x2="13" y2="12" />
+        </svg>
+      )
+    case 'rag':
+      return (
+        <svg {...common}>
+          <path d="M7 3 h7 l4 4 v12 a1 1 0 0 1 -1 1 h-10 a1 1 0 0 1 -1 -1 v-15 a1 1 0 0 1 1 -1 z" />
+          <polyline points="14 3 14 7 18 7" />
+          <circle cx="11" cy="13" r="2.2" />
+          <line x1="12.6" y1="14.6" x2="14.6" y2="16.6" />
+        </svg>
+      )
+    case 'automation':
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 3 v2 M12 19 v2 M3 12 h2 M19 12 h2 M5.6 5.6 l1.5 1.5 M16.9 16.9 l1.5 1.5 M18.4 5.6 l-1.5 1.5 M7.1 16.9 l-1.5 1.5" />
+        </svg>
+      )
+    case 'agent':
+      return (
+        <svg {...common}>
+          <rect x="5" y="7" width="14" height="11" rx="2.5" />
+          <line x1="12" y1="4" x2="12" y2="7" />
+          <circle cx="12" cy="3.5" r="1" />
+          <circle cx="9.6" cy="12" r="1" />
+          <circle cx="14.4" cy="12" r="1" />
+          <line x1="9.5" y1="15.5" x2="14.5" y2="15.5" />
+        </svg>
+      )
+    default:
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="8" />
+        </svg>
+      )
+  }
+}
+
 export function ServiceGlyph({ kind, className = 'w-6 h-6' }: { kind: string; className?: string }) {
   const common = {
     className,

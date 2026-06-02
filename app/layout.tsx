@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "RAG systems",
     "web app development",
     "mobile app development",
-    "API integration",
+    "APIs & integration",
     "staff augmentation",
     "managed software delivery",
     "Vecminds",
@@ -142,7 +142,7 @@ const organizationSchema = {
           "@type": "Service",
           name: "Custom Software Development",
           description:
-            "End-to-end product engineering on a modern stack — web apps, mobile apps, AI-native products, and API integration — built so your team can run it without us.",
+            "End-to-end product engineering on a modern stack — web apps, mobile apps, AI-native products, and APIs & Integration — built so your team can run it without us.",
         },
       },
       {

@@ -6,11 +6,12 @@ import { ArrowRight, MenuIcon, CloseIcon } from "./icons";
 import CalComButton from "./CalComButton";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  // { label: "Work", href: "#work" },
-  { label: "Team", href: "#team" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  // { label: "Work", href: "/#work" },
+  { label: "Team", href: "/#team" },
+  { label: "About", href: "/#about" },
+  { label: "Blog", href: "https://blog.vecminds.com/" },
 ];
 
 export default function Navbar() {
@@ -58,7 +59,7 @@ export default function Navbar() {
     <nav className={navClass}>
       <div className="max-w-[88rem] mx-auto flex items-center justify-between gap-4">
         <a
-          href="#"
+          href="/"
           className="flex items-center text-black shrink-0"
           onClick={closeMenu}
         >

@@ -30,20 +30,20 @@ const columns = [
 ];
 
 const footerLinkMap: Record<string, string> = {
-  "Custom Software": "#services",
-  "AI & Automation": "#services",
-  "Web Apps": "#services",
-  "Mobile Apps": "#services",
-  "API & Integrations": "#services",
-  "Case studies": "#work",
-  Industries: "#work",
-  "Client stories": "#work",
-  Process: "#process",
-  Playbook: "#process",
-  Newsletter: "#contact",
-  About: "#about",
-  Team: "#team",
-  Contact: "#contact",
+  "Custom Software": "/services/custom-software-development",
+  "AI & Automation": "/services/ai-development-automation",
+  "Web Apps": "/services/custom-software-development",
+  "Mobile Apps": "/services/custom-software-development",
+  "API & Integrations": "/services/custom-software-development",
+  "Case studies": "/#work",
+  Industries: "/#work",
+  "Client stories": "/#work",
+  Process: "/#process",
+  Playbook: "/#process",
+  Newsletter: "/#contact",
+  About: "/#about",
+  Team: "/#team",
+  Contact: "/#contact",
   Blog: "https://blog.vecminds.com/",
 };
 
@@ -130,7 +130,7 @@ export default function Footer() {
         {/* Link columns */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 mb-16">
           <div className="shrink-0">
-            <a href="#" className="flex items-center text-black mb-5">
+            <a href="/" className="flex items-center text-black mb-5">
               <Image
                 src="/Vecminds_Full_Logo.png"
                 alt="Vecminds Technologies"

@@ -89,6 +89,46 @@ html {
 .svc-card-light:hover .svc-arrow { background-color: #2754d9; color: #fff; }
 .svc-card-dark:hover .svc-arrow { background-color: #fff; color: #2754d9; }
 
+/* Deliverable cards on service detail pages — mirrors svc-card-light choreography */
+.dlv-card {
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.28s ease,
+    border-color 0.2s ease;
+}
+.dlv-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 24px 48px -22px rgba(43, 38, 68, 0.28);
+}
+.dlv-ghost {
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.dlv-card:hover .dlv-ghost { transform: translate(-8px, -6px); }
+.dlv-icon {
+  transition:
+    background-color 0.2s ease,
+    transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 0.2s ease;
+}
+.dlv-card:hover .dlv-icon {
+  transform: rotate(-8deg) scale(1.06);
+  background-color: #2754d9;
+  color: #fff;
+}
+.dlv-chip {
+  transition:
+    background-color 0.25s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.dlv-card:hover .dlv-chip { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) {
+  .dlv-card:hover { transform: none; box-shadow: none; }
+  .dlv-card:hover .dlv-ghost { transform: none; }
+  .dlv-card:hover .dlv-icon { transform: none; }
+  .dlv-card:hover .dlv-chip { transform: none; }
+}
+
 /* Delivery model rows */
 .dm-row { transition: background-color 0.25s ease; }
 .dm-row:hover { background-color: #fafafa; }

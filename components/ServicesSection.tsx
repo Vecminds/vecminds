@@ -1,23 +1,15 @@
+import Link from 'next/link'
 import { ArrowRight, ServiceGlyph } from './icons'
+import { SERVICES, SERVICES_BASE_PATH } from '@/lib/services'
 
-const services = [
-  {
-    n: '01',
-    glyph: 'product',
-    title: 'Custom Software Development',
-    body: 'You get an end-to-end product built on a modern stack. We take it from a blank repo to a live system your team can run without us, so you own it fully when we step back.',
-    tags: ['Web App Development', 'Mobile App Development', 'AI-Native Products', 'API Integration'],
-    link: 'https://vecminds.notion.site/Custom-Software-Engineering-36c43b2206fe80f39abcfa333cff7e9f',
-  },
-  {
-    n: '02',
-    glyph: 'ai',
-    title: 'AI Development & Automation',
-    body: 'We build LLM apps, RAG pipelines, and automation that you measure in hours saved, not demos watched. If it does not cut real work, it does not ship.',
-    tags: ['LLM/AI Applications', 'RAG Systems', 'Workflow Automation', 'AI Agents'],
-    link: 'https://vecminds.notion.site/AI-Automation-Development-36c43b2206fe80418f68dbab79cc5dae',
-  },
-]
+const services = SERVICES.map((s, i) => ({
+  n: `0${i + 1}`,
+  glyph: s.glyph,
+  title: s.title,
+  body: s.cardBody,
+  tags: s.tags,
+  link: `${SERVICES_BASE_PATH}/${s.slug}`,
+}))
 
 export default function ServicesSection() {
   return (
@@ -41,11 +33,9 @@ export default function ServicesSection() {
           {services.map((s, idx) => {
             const dark = idx === 1
             return (
-              <a
+              <Link
                 key={s.n}
                 href={s.link}
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label={`Explore ${s.title}`}
                 className={`svc-card ${dark ? 'svc-card-dark' : 'svc-card-light'} group relative rounded-2xl p-6 sm:p-7 md:p-9 min-h-[360px] sm:min-h-[400px] md:min-h-[440px] flex flex-col justify-between overflow-hidden cursor-pointer`}
                 style={{
@@ -108,7 +98,7 @@ export default function ServicesSection() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             )
           })}
         </div>
