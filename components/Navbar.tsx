@@ -6,12 +6,12 @@ import { ArrowRight, MenuIcon, CloseIcon } from "./icons";
 import CalComButton from "./CalComButton";
 
 const links = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/#services", external: false },
   { label: "Process", href: "/#process" },
   // { label: "Work", href: "/#work" },
   { label: "Team", href: "/#team" },
   { label: "About", href: "/#about" },
-  { label: "Blog", href: "https://blog.vecminds.com/" },
+  // { label: "Blog", href: "https://blog.vecminds.com/", external: true },
 ];
 
 export default function Navbar() {
@@ -79,6 +79,7 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
+              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="relative text-base text-gray-700 hover:text-black font-medium transition-colors duration-200 group"
             >
               {l.label}
@@ -116,6 +117,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={closeMenu}
+                    {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className={`flex items-center justify-between px-5 py-4 text-black text-lg font-medium rounded-xl active:bg-black/[0.04] ${idx < links.length - 1 ? "border-b border-black/[0.06]" : ""}`}
                     style={{ letterSpacing: "-0.01em" }}
                   >

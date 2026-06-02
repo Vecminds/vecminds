@@ -167,16 +167,21 @@ export default function Footer() {
                   {col.title}
                 </h4>
                 <ul className="flex flex-col gap-3">
-                  {col.links.map((l) => (
-                    <li key={l}>
-                      <a
-                        href={footerLinkMap[l]}
-                        className="text-black/60 hover:text-black text-sm transition-colors duration-200"
-                      >
-                        {l}
-                      </a>
-                    </li>
-                  ))}
+                  {col.links.map((l) => {
+                    const href = footerLinkMap[l];
+                    const isExternal = href?.startsWith("http");
+                    return (
+                      <li key={l}>
+                        <a
+                          href={href}
+                          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="text-black/60 hover:text-black text-sm transition-colors duration-200"
+                        >
+                          {l}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
