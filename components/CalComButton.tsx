@@ -1,7 +1,7 @@
 "use client";
 
 import { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import { useRef } from "react";
 
 const CAL_NAMESPACE = "15min";
 const CAL_LINK = "vecminds/15min";
@@ -22,29 +22,38 @@ export default function CalComButton({
   onClick,
   title,
 }: CalComButtonProps) {
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+  const initializedRef = useRef(false);
+
+  const handleClick = async () => {
+    onClick?.();
+    const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+    if (!initializedRef.current) {
       cal("ui", {
-        cssVarsPerTheme: { light: { "cal-brand": "#2754D9" }, dark: { "cal-brand": "#2754D9" } },
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#2754D9" },
+          dark: { "cal-brand": "#2754D9" },
+        },
         hideEventTypeDetails: false,
         layout: CAL_LAYOUT,
       });
-    })();
-  }, []);
+      initializedRef.current = true;
+    }
+    cal("modal", {
+      calLink: CAL_LINK,
+      config: {
+        layout: CAL_LAYOUT,
+        useSlotsViewOnSmallScreen: "true",
+      },
+    });
+  };
 
   return (
     <button
-      data-cal-namespace={CAL_NAMESPACE}
-      data-cal-link={CAL_LINK}
-      data-cal-config={JSON.stringify({
-        layout: CAL_LAYOUT,
-        useSlotsViewOnSmallScreen: "true",
-      })}
+      type="button"
       className={className}
       style={style}
       title={title}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {children}
     </button>

@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
-import { GA_MEASUREMENT_ID, GTM_ID, META_PIXEL_ID, TAWK_SRC } from "@/lib/integrations";
+import ConsentScripts from "@/components/ConsentScripts";
+import CookieBanner from "@/components/CookieBanner";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -208,115 +208,8 @@ export default function RootLayout({
       </head>
 
       <body>
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-        </Script>
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
-        </Script>
-        {/* Meta Pixel */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`!function(f,b,e,v,n,t,s)                                                                                                
-     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                                                                            
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};                                                                    
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';                                                                    
-      n.queue=[];t=b.createElement(e);t.async=!0;                                                                                  
-      t.src=v;s=b.getElementsByTagName(e)[0];                                                                                      
-      s.parentNode.insertBefore(t,s)}(window,document,'script',                                                                    
-      'https://connect.facebook.net/en_US/fbevents.js');                                                                                  
-      fbq('init','${META_PIXEL_ID}');                                                                                                     
-      fbq('track','PageView');`}
-        </Script>
-        <noscript>
-          {" "}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
-        {/* Tawk.to live chat — launcher is hidden; opened via the Chat Assistant button.
-            A MutationObserver is started BEFORE the Tawk script loads so that any
-            fixed-position iframe Tawk renders is immediately hidden, eliminating
-            the 1-2s flash of the launcher / "We Are Here!" animation on refresh.
-            The observer disconnects itself inside onLoad, before the user can
-            ever open the chat panel via maximize(). */}
-        <Script id="tawk-to" strategy="afterInteractive">
-          {`var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-// Permanently hide Tawk's non-panel iframes (launcher ~60px, notification
-// ~45px, badge ~95px) via a MutationObserver that runs for the lifetime of
-// the page. The chat PANEL is ~502px tall and passes the height guard.
-// We never disconnect so proactive-engagement re-shows are also suppressed.
-(function(){
-  if(typeof MutationObserver==='undefined')return;
-  function checkEl(el){
-    if(!el||el.tagName!=='IFRAME')return;
-    var cs=window.getComputedStyle(el);
-    if(cs.position==='fixed'&&cs.display!=='none'&&parseFloat(cs.height)<200){
-      el.style.setProperty('display','none','important');
-    }
-  }
-  new MutationObserver(function(muts){
-    for(var i=0;i<muts.length;i++){
-      var m=muts[i];
-      if(m.type==='attributes'){
-        checkEl(m.target);
-      }else if(m.type==='childList'){
-        m.addedNodes.forEach(function(n){
-          if(n.nodeType!==1)return;
-          checkEl(n);
-          if(n.querySelectorAll)n.querySelectorAll('iframe').forEach(checkEl);
-        });
-      }
-    }
-  }).observe(document.documentElement,{
-    subtree:true,attributes:true,attributeFilter:['style'],childList:true
-  });
-})();
-Tawk_API.customStyle={
-  visibility:{
-    desktop:{position:'br',xOffset:20,yOffset:96},
-    mobile:{position:'br',xOffset:12,yOffset:88}
-  }
-};
-Tawk_API.onLoad=function(){
-  Tawk_API.hideWidget();
-  Tawk_API.showWidget=function(){};
-};
-Tawk_API.onBeforeLoad=function(){
-  Tawk_API.showWidget=function(){};
-};
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='${TAWK_SRC}';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();`}
-        </Script>
+        <ConsentScripts />
+        <CookieBanner />
         {children}
       </body>
     </html>
