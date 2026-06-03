@@ -16,6 +16,7 @@ export default function HeroSection() {
             loop
             playsInline
             poster="/hero-poster.jpg"
+            aria-label="Vecminds Technologies custom software and AI development"
             className="object-cover absolute inset-0 w-full h-full"
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4"
           />

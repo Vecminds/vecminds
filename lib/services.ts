@@ -80,7 +80,7 @@ export const SERVICES: Service[] = [
     ],
     metaTitle: "Custom Software Development Company | Vecminds",
     metaDescription:
-      "Custom software development for web, mobile, and APIs. We build production systems on a modern stack that your own team can run after we hand them over.",
+      "Custom software development for web, mobile, and APIs. We build production systems on a modern stack your team can run after handover.",
     heroLead:
       "We design and build production software, from an empty repo to a live system your team runs on its own. Web apps, mobile apps, internal platforms, and the APIs that connect them. We write code your engineers can read, extend, and own after we step back.",
     outcomes: [
@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
     ],
     metaTitle: "AI Development & Automation Services | Vecminds",
     metaDescription:
-      "AI development and automation services. We build LLM apps, RAG pipelines, and AI agents that remove real operational work, measured in hours saved.",
+      "AI development and automation: LLM apps, RAG pipelines, and AI agents that remove real operational work, measured in hours saved, not demos.",
     heroLead:
       "We build AI that does real work. LLM applications, retrieval over your own data, and automation that takes hours out of operations-heavy teams. We judge it by the work it removes, not the demo it gives.",
     outcomes: [

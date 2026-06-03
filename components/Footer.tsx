@@ -133,7 +133,7 @@ export default function Footer() {
             <a href="/" className="flex items-center text-black mb-5">
               <Image
                 src="/Vecminds_Full_Logo.png"
-                alt="Vecminds Technologies"
+                alt="Vecminds Technologies logo"
                 width={176}
                 height={44}
                 style={{ height: "44px", width: "auto" }}

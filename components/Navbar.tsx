@@ -65,7 +65,7 @@ export default function Navbar() {
         >
           <Image
             src="/Vecminds_Full_Logo.png"
-            alt="Vecminds Technologies"
+            alt="Vecminds Technologies logo"
             width={176}
             height={44}
             className="w-auto"

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.vecminds.com"),
   title: "Vecminds Technologies | Custom Software & AI Development Company",
   description:
-    "We're a small team of engineers building custom software, AI, and automation that ships fast and keeps paying off. Tell us what you're building.",
+    "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
   keywords: [
     "custom software development",
     "software development company",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "A small team of engineers building custom software, AI, and automation that ships fast and keeps paying off for ambitious teams.",
+      "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
     url: "https://www.vecminds.com",
     siteName: "Vecminds Technologies",
     images: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "A small team of engineers building custom software, AI, and automation that ships fast and keeps paying off for ambitious teams.",
+      "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
     images: ["/og-image.png"],
     site: "@vecminds",
     creator: "@vecminds",
@@ -108,7 +108,7 @@ const organizationSchema = {
   image: "https://www.vecminds.com/og-image.png",
   email: "info@vecminds.com",
   description:
-    "A software development company building AI-native products, LLM and automation systems, and full-stack custom software for startups and growing teams.",
+    "Custom software and AI development company building AI-native products, LLM and automation systems, and full-stack software for growing teams.",
   areaServed: "Worldwide",
   contactPoint: {
     "@type": "ContactPoint",
@@ -142,7 +142,7 @@ const organizationSchema = {
           "@type": "Service",
           name: "Custom Software Development",
           description:
-            "End-to-end product engineering on a modern stack — web apps, mobile apps, AI-native products, and APIs & Integration — built so your team can run it without us.",
+            "End-to-end product engineering on a modern stack: web apps, mobile apps, AI-native products, and API integration, built so your team can run it without us.",
         },
       },
       {
