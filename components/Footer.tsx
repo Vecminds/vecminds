@@ -219,6 +219,12 @@ export default function Footer() {
             </a>
           </div>
           <div className="flex items-center gap-4 text-xs text-black/50">
+            <a
+              href="/privacy-policy"
+              className="hover:text-black transition-colors duration-200"
+            >
+              Privacy Policy
+            </a>
             <span>NP · EN · Global</span>
           </div>
         </div>

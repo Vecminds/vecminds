@@ -20,7 +20,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vecminds.com"),
-  title: "Vecminds Technologies | Custom Software & AI Development Company",
+  title: "Custom Software & AI Development Company | Vecminds",
   description:
     "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
   keywords: [

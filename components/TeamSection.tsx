@@ -125,9 +125,35 @@ const team = [
   },
 ];
 
+const teamSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Vecminds Technologies Team",
+  itemListElement: team.map((member, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.role,
+      description: member.specialty,
+      worksFor: {
+        "@id": "https://www.vecminds.com/#team",
+      },
+      ...(member.linkedin ? { sameAs: [member.linkedin] } : {}),
+      ...(member.github ? { sameAs: [member.github] } : {}),
+    },
+  })),
+};
+
 export default function TeamSection() {
   return (
-    <section id="team" className="bg-[#F5F5F5] px-6 py-24">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
+      />
+      <section id="team" className="bg-[#F5F5F5] px-6 py-24">
       <div className="max-w-[88rem] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           <div className="lg:col-span-4">
@@ -287,5 +313,6 @@ export default function TeamSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
