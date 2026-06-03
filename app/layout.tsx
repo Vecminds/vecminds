@@ -138,18 +138,22 @@ const organizationSchema = {
     itemListElement: [
       {
         "@type": "Offer",
+        url: "https://www.vecminds.com/services/custom-software-development",
         itemOffered: {
           "@type": "Service",
           name: "Custom Software Development",
+          url: "https://www.vecminds.com/services/custom-software-development",
           description:
             "End-to-end product engineering on a modern stack: web apps, mobile apps, AI-native products, and API integration, built so your team can run it without us.",
         },
       },
       {
         "@type": "Offer",
+        url: "https://www.vecminds.com/services/ai-development-automation",
         itemOffered: {
           "@type": "Service",
           name: "AI Development & Automation",
+          url: "https://www.vecminds.com/services/ai-development-automation",
           description:
             "LLM applications, RAG pipelines, AI agents, and workflow automation that cut real operational work, not just demos.",
         },
@@ -166,6 +170,31 @@ const websiteSchema = {
   url: "https://www.vecminds.com",
   inLanguage: "en-US",
   publisher: { "@id": ORG_ID },
+};
+
+const servicesListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Vecminds Services",
+  url: "https://www.vecminds.com/#services",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Custom Software Development",
+      url: "https://www.vecminds.com/services/custom-software-development",
+      description:
+        "End-to-end product engineering for web, mobile, and APIs on a modern stack your team can own after handover.",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "AI Development & Automation",
+      url: "https://www.vecminds.com/services/ai-development-automation",
+      description:
+        "LLM apps, RAG pipelines, and workflow automation that remove real operational work, measured in hours saved.",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -194,6 +223,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#2754D9" />
+        <link rel="me" href="https://mastodon.social/@vecminds" />
+        
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -204,6 +235,12 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(servicesListSchema),
+          }}
         />
       </head>
 
