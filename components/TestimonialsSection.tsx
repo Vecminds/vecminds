@@ -1,25 +1,47 @@
 import { ArrowRight } from './icons'
 
-const featured = {
+  const testimonial = {
+  stars: 5,
   quote:
-    "Really good work. The multilingual website Vecminds built for us is already helping improve our conversion rate.",
+    'Vecminds Technologies built the website for J & N Caregiver Training and they understood exactly what we needed. We train Nepalese caregivers for certified professional placement in Japan, so the site had to work in both English and Japanese, and it had to look credible to students, families, and Japanese care facilities who check us out online. They delivered all of that. On top of the public site they built us a full admin dashboard where we manage enrollments, student/partner inquiries, courses, blog posts, and success stories ourselves. Highly recommend Vecminds Technologies.',
   name: 'Ram Krishna Shrestha',
-  role: 'Managing Director, J & N Caregiver Training',
-  credential: 'Former Vice President, NRNA Japan',
-  project: 'Multilingual website',
-  url: 'https://www.jncaregivertraining.com',
-  urlLabel: 'jncaregivertraining.com',
-  facebook: 'https://www.facebook.com/ramkrishnashrestha01/',
+  role: 'Managing Director',
+  company: 'J & N Caregiver Training',
+  credential: 'Former Vice-President, NRNA Japan',
+  initials: 'RKS',
+  tag: 'Multilingual website',
+  profileUrl: 'https://www.facebook.com/ramkrishnashrestha01/',
+  project: {
+    url: 'https://www.jncaregivertraining.com',
+    urlLabel: 'jncaregivertraining.com',
+  },
+}
+
+function Stars({ count }: { count: number }) {
+  return (
+    <div className="flex gap-1" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: count }).map((_, i) => (
+        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  )
 }
 
 export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="bg-[#F5F5F5] px-6 py-24">
       <div className="max-w-[88rem] mx-auto">
+
+        {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
           <div>
-            <p className="text-black/60 text-sm mb-2">What clients say</p>
-            <h2 className="text-black text-5xl md:text-6xl font-medium leading-none" style={{ letterSpacing: '-0.04em' }}>
+            <p className="text-black/50 text-sm mb-2">What clients say</p>
+            <h2
+              className="text-black text-5xl md:text-6xl font-medium leading-none"
+              style={{ letterSpacing: '-0.04em' }}
+            >
               Don&apos;t just
               <br />
               take our word for it.
@@ -30,73 +52,78 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Featured quote */}
-          <div
-            className="lg:col-span-2 rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[360px]"
-            style={{ backgroundColor: '#2754D9' }}
-          >
-            <div
-              className="text-white/30 leading-none font-medium"
-              style={{ fontSize: '120px', letterSpacing: '-0.06em', height: '60px' }}
-              aria-hidden="true"
-            >
-              &ldquo;
+        {/* Unified card */}
+        <div className="bg-white rounded-2xl overflow-hidden">
+
+          {/* Quote area */}
+          <div className="p-8 sm:p-12">
+            <div className="flex items-center justify-between mb-8">
+              <Stars count={testimonial.stars} />
+              <span className="text-black/40 text-xs font-medium px-3 py-1.5 rounded-full border border-black/10">
+                {testimonial.tag}
+              </span>
             </div>
-            <p className="text-white text-2xl md:text-3xl leading-snug max-w-2xl" style={{ letterSpacing: '-0.02em' }}>
-              {featured.quote}
-            </p>
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
-              <div className="flex items-center gap-3">
-                <a
-                  href={featured.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${featured.name} on Facebook`}
-                  className="w-9 h-9 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-200"
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z" />
-                  </svg>
-                </a>
-                <div>
-                  <p className="text-white text-base font-medium">{featured.name}</p>
-                  <p className="text-white/70 text-sm">{featured.role}</p>
-                  <p className="text-white/50 text-xs mt-0.5">{featured.credential}</p>
-                </div>
+
+            <div className="flex gap-5 items-start">
+              <div
+                className="text-[#2754D9] font-medium shrink-0 select-none leading-none mt-1"
+                style={{ fontSize: '64px', lineHeight: '0.85', letterSpacing: '-0.04em' }}
+                aria-hidden="true"
+              >
+                &ldquo;
               </div>
-              <span className="text-white/40 text-xs font-medium">{featured.project}</span>
+              <p
+                className="text-black/80 text-lg leading-relaxed"
+                style={{ letterSpacing: '-0.01em' }}
+              >
+                {testimonial.quote}
+              </p>
             </div>
           </div>
 
-          {/* Proof panel: live project + low-commitment CTA */}
-          <div className="lg:col-span-1 bg-white rounded-2xl border border-black/5 p-6 sm:p-8 flex flex-col justify-between min-h-[360px]">
-            <div>
-              <p className="text-black/50 text-sm mb-2">Live project</p>
-              <h3 className="text-black text-2xl font-medium leading-snug" style={{ letterSpacing: '-0.02em' }}>
-                J &amp; N Caregiver Training
-              </h3>
-              <p className="text-black/60 text-sm leading-relaxed mt-3">
-                A multilingual website built to reach a wider audience and turn more visitors into enrolled students.
-              </p>
+          {/* Footer strip */}
+          <div className="border-t border-black/[0.06] bg-black/[0.03] px-8 sm:px-12 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+
+            {/* Author */}
+            <div className="flex items-center gap-3">
+              <a
+                href={testimonial.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${testimonial.name} on Facebook`}
+                className="w-10 h-10 rounded-full bg-[#2754D9] flex items-center justify-center text-white text-xs font-semibold shrink-0 hover:opacity-90 transition-opacity"
+              >
+                {testimonial.initials}
+              </a>
+              <div>
+                <p className="text-black text-sm font-medium">{testimonial.name}</p>
+                <p className="text-black/50 text-xs mt-0.5">
+                  {testimonial.role}, {testimonial.company}
+                </p>
+                <p className="text-black/35 text-xs mt-0.5">{testimonial.credential}</p>
+              </div>
             </div>
-            <a
-              href={featured.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-between gap-3 mt-6 px-5 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
-            >
-              Visit the live site
-              <ArrowRight className="w-4 h-4" />
-            </a>
+
+            {/* Project proof */}
+            <div className="flex items-center gap-4 shrink-0">
+              <div className="hidden sm:block text-right">
+                <p className="text-black/40 text-xs mb-0.5">Live project</p>
+                <p className="text-black/60 text-sm font-mono">{testimonial.project.urlLabel}</p>
+              </div>
+              <a
+                href={testimonial.project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-[#2754D9] transition-colors duration-200 group"
+              >
+                Visit the live site
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </a>
+            </div>
+
           </div>
         </div>
+
       </div>
     </section>
   )

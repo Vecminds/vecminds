@@ -18,7 +18,7 @@ export default function HeroSection() {
             poster="/hero-poster.jpg"
             aria-label="Vecminds Technologies custom software and AI development"
             className="object-cover absolute inset-0 w-full h-full"
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4"
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260505_101331_74f9b798-3f00-4e86-8a01-377aa16ffeaa.mp4"
           />
 
           {/* Scrim — keeps black text legible against any video frame */}
@@ -58,12 +58,12 @@ export default function HeroSection() {
                   <ArrowRight className="w-5 h-5 text-black" />
                 </span>
               </a>
-              {/* <a
+              <a
                 href="#testimonials"
                 className="inline-flex items-center gap-2 text-black text-base md:text-lg font-medium px-6 py-3.5 rounded-full border border-black/20 bg-white/80 hover:bg-white transition-colors duration-200"
               >
                 See our work
-              </a> */}
+              </a>
             </div>
 
             {/* Trust strip — compact proof under the CTAs */}
