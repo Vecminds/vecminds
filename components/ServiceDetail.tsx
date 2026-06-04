@@ -110,28 +110,34 @@ export default function ServiceDetail({ service }: { service: Service }) {
             What you walk away with.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {service.outcomes.map((o) => (
+            {service.outcomes.map((o, i) => (
               <div
                 key={o}
-                className="bg-white rounded-2xl border border-black/5 p-6 flex items-start gap-4"
+                className="relative bg-white rounded-2xl overflow-hidden p-7 sm:p-8 flex flex-col justify-between"
               >
-                <span className="shrink-0 w-7 h-7 rounded-full bg-[#2754D9]/10 text-[#2754D9] flex items-center justify-center mt-0.5">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                    aria-hidden="true"
+                {/* Blue top accent */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#2754D9]" />
+
+                {/* Ghost number */}
+                {/* <span
+                  aria-hidden="true"
+                  className="absolute right-4 bottom-1 text-black/[0.045] font-medium leading-none select-none pointer-events-none"
+                  style={{ fontSize: "120px", letterSpacing: "-0.06em" }}
+                >
+                  0{i + 1}
+                </span> */}
+
+                <div className="relative z-10">
+                  <span className="text-[#2754D9] text-xs font-semibold tracking-[0.1em] uppercase mb-4 block">
+                    0{i + 1}
+                  </span>
+                  <p
+                    className="text-black text-lg md:text-xl font-medium leading-snug"
+                    style={{ letterSpacing: "-0.02em" }}
                   >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <p className="text-black/75 text-base md:text-lg leading-relaxed font-inter">
-                  {o}
-                </p>
+                    {o}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -148,7 +154,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
           >
             The work, specifically.
           </h2>
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {service.deliverables.map((d, i) => (
               <div
                 key={d.title}
