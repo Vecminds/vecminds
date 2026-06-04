@@ -63,27 +63,26 @@ fbq('init','${META_PIXEL_ID}');
 fbq('track','PageView');`}
       </Script>
 
-      {/* Tawk.to — launcher hidden; opened via FloatingActions chat button */}
+      {/* Tawk.to — launcher bubble suppressed; chat opened via FloatingActions */}
       <Script id="tawk-to" strategy="afterInteractive">
         {`var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
 (function(){
   if(typeof MutationObserver==='undefined')return;
-  function checkEl(el){
+  function hide(el){
     if(!el||el.tagName!=='IFRAME')return;
     var cs=window.getComputedStyle(el);
-    if(cs.position==='fixed'&&cs.display!=='none'&&parseFloat(cs.height)<200){
+    if(cs.position==='fixed'&&cs.display!=='none'&&parseFloat(cs.height)<200)
       el.style.setProperty('display','none','important');
-    }
   }
   new MutationObserver(function(muts){
     for(var i=0;i<muts.length;i++){
       var m=muts[i];
-      if(m.type==='attributes'){checkEl(m.target);}
+      if(m.type==='attributes'){hide(m.target);}
       else if(m.type==='childList'){
         m.addedNodes.forEach(function(n){
           if(n.nodeType!==1)return;
-          checkEl(n);
-          if(n.querySelectorAll)n.querySelectorAll('iframe').forEach(checkEl);
+          hide(n);
+          if(n.querySelectorAll)n.querySelectorAll('iframe').forEach(hide);
         });
       }
     }
@@ -99,13 +98,7 @@ Tawk_API.customStyle={
 };
 Tawk_API.onLoad=function(){
   Tawk_API.hideWidget();
-  if(typeof Tawk_API.showWidget==='function'){
-    Tawk_API._showWidget=Tawk_API.showWidget.bind(Tawk_API);
-  }
-  Tawk_API.showWidget=function(){};
-};
-Tawk_API.onBeforeLoad=function(){
-  Tawk_API.showWidget=function(){};
+  if(Tawk_API.isChatMaximized&&Tawk_API.isChatMaximized())Tawk_API.minimize();
 };
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];

@@ -8,13 +8,31 @@ import { useScrolledToBottom } from "./useScrolledToBottom";
 declare global {
   interface Window {
     Tawk_API?: {
+      // Connection
+      start?: (opts?: { showWidget?: boolean }) => void;
+      shutdown?: () => void;
+      // Display control
       maximize?: () => void;
       minimize?: () => void;
+      toggle?: () => void;
       hideWidget?: () => void;
       showWidget?: () => void;
-      _showWidget?: () => void;
+      toggleVisibility?: () => void;
+      // Status queries
+      isChatMaximized?: () => boolean;
+      isChatMinimized?: () => boolean;
+      isChatHidden?: () => boolean;
+      isChatOngoing?: () => boolean;
+      getStatus?: () => 'online' | 'away' | 'offline';
+      // Event callbacks
+      onLoad?: () => void;
+      onBeforeLoad?: () => void;
+      onStatusChange?: (status: 'online' | 'away' | 'offline') => void;
       onChatMaximized?: () => void;
       onChatMinimized?: () => void;
+      onChatHidden?: () => void;
+      onChatStarted?: () => void;
+      onChatEnded?: () => void;
       onUnreadCountChanged?: (count: number) => void;
       [key: string]: unknown;
     };
@@ -24,10 +42,8 @@ declare global {
 const WHATSAPP_URL = "https://wa.me/977976638077";
 const UNREAD_KEY = "vecminds_tawk_unread";
 
-// Chrome renders position:fixed iframes as visible even when their parent has
-// display:none (the state hideWidget() puts the Tawk container into). We hide
-// only the small minimize-button iframe (≤70px wide). The proactive-engagement
-// notification is suppressed via the MutationObserver in layout.tsx instead.
+// Safety net: hides the Tawk launcher bubble iframe (≤70px wide) if the
+// MutationObserver in ConsentScripts hasn't caught it yet within 150ms.
 function hideTawkMinimizeIframe() {
   setTimeout(() => {
     document.querySelectorAll<HTMLIFrameElement>("iframe").forEach((iframe) => {
@@ -70,15 +86,13 @@ export default function FloatingActions() {
     if (saved > 0) setUnreadCount(saved);
   }, []);
 
-  // Drive the Tawk.to chat from our own button: keep Tawk's launcher bubble
-  // hidden at all times and mirror its open/close state + unread count into React.
+  // Mirror Tawk's open/close/unread state into React. The launcher bubble is kept
+  // hidden at all times — only our FloatingActions button drives the chat.
   useEffect(() => {
     window.Tawk_API = window.Tawk_API || {};
 
     window.Tawk_API.onChatMaximized = () => {
-      hideTawkMinimizeIframe();
       setChatOpen(true);
-      // Clear badge + persisted count — user is now reading the messages.
       setUnreadCount(0);
       localStorage.removeItem(UNREAD_KEY);
     };
@@ -88,12 +102,16 @@ export default function FloatingActions() {
       setChatOpen(false);
     };
 
+    // Fires when hideWidget() is called (e.g. after minimize); keeps state in sync.
+    window.Tawk_API.onChatHidden = () => {
+      setChatOpen(false);
+    };
+
     window.Tawk_API.onUnreadCountChanged = (count: number) => {
       // Only update badge when the chat panel is not already open.
       setChatOpen((isOpen) => {
         if (!isOpen) {
           setUnreadCount(count);
-          // Persist so the badge survives a page refresh.
           if (count > 0) localStorage.setItem(UNREAD_KEY, String(count));
           else localStorage.removeItem(UNREAD_KEY);
         }
@@ -143,7 +161,6 @@ export default function FloatingActions() {
       setUnreadCount(0);  // clear badge immediately on open
       localStorage.removeItem(UNREAD_KEY);
       hideTawkMinimizeIframe();
-      api._showWidget?.();
       api.maximize?.();
     }
   };
