@@ -99,6 +99,9 @@ Tawk_API.customStyle={
 };
 Tawk_API.onLoad=function(){
   Tawk_API.hideWidget();
+  if(typeof Tawk_API.showWidget==='function'){
+    Tawk_API._showWidget=Tawk_API.showWidget.bind(Tawk_API);
+  }
   Tawk_API.showWidget=function(){};
 };
 Tawk_API.onBeforeLoad=function(){

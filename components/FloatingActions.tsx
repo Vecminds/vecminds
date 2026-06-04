@@ -12,6 +12,7 @@ declare global {
       minimize?: () => void;
       hideWidget?: () => void;
       showWidget?: () => void;
+      _showWidget?: () => void;
       onChatMaximized?: () => void;
       onChatMinimized?: () => void;
       onUnreadCountChanged?: (count: number) => void;
@@ -75,7 +76,6 @@ export default function FloatingActions() {
     window.Tawk_API = window.Tawk_API || {};
 
     window.Tawk_API.onChatMaximized = () => {
-      window.Tawk_API?.hideWidget?.();
       hideTawkMinimizeIframe();
       setChatOpen(true);
       // Clear badge + persisted count — user is now reading the messages.
@@ -143,6 +143,7 @@ export default function FloatingActions() {
       setUnreadCount(0);  // clear badge immediately on open
       localStorage.removeItem(UNREAD_KEY);
       hideTawkMinimizeIframe();
+      api._showWidget?.();
       api.maximize?.();
     }
   };
