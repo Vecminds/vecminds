@@ -78,10 +78,12 @@ export default function FloatingActions() {
   const [unreadCount, setUnreadCount] = useState(0);
   const atBottom = useScrolledToBottom(140);
   const containerRef = useRef<HTMLDivElement>(null);
+  const originalTitleRef = useRef('');
 
-  // Restore persisted count immediately on mount so the badge is visible
-  // right away on refresh — before Tawk even finishes loading.
+  // Capture the page title before Tawk can modify it, and restore persisted
+  // unread count so the badge is visible immediately on refresh.
   useEffect(() => {
+    originalTitleRef.current = document.title;
     const saved = parseInt(localStorage.getItem(UNREAD_KEY) || "0", 10);
     if (saved > 0) setUnreadCount(saved);
   }, []);
@@ -95,6 +97,7 @@ export default function FloatingActions() {
       setChatOpen(true);
       setUnreadCount(0);
       localStorage.removeItem(UNREAD_KEY);
+      document.title = originalTitleRef.current;
     };
 
     window.Tawk_API.onChatMinimized = () => {
@@ -108,6 +111,7 @@ export default function FloatingActions() {
     };
 
     window.Tawk_API.onUnreadCountChanged = (count: number) => {
+      if (count === 0) document.title = originalTitleRef.current;
       // Only update badge when the chat panel is not already open.
       setChatOpen((isOpen) => {
         if (!isOpen) {
@@ -160,6 +164,7 @@ export default function FloatingActions() {
       setChatOpen(true);  // optimistic — don't wait for onChatMaximized
       setUnreadCount(0);  // clear badge immediately on open
       localStorage.removeItem(UNREAD_KEY);
+      document.title = originalTitleRef.current;
       hideTawkMinimizeIframe();
       api.maximize?.();
     }
