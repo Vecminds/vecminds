@@ -29,7 +29,7 @@ const SECTIONS = [
   },
   {
     heading: "Third-party services",
-    body: "We use the following third-party services that may process data on your behalf: Google Analytics (analytics), Google Tag Manager (tag management), Meta Pixel (advertising), Cal.com (call booking), and Tawk.to (live chat). Each service operates under its own privacy policy. Links to their respective policies are available on their websites.",
+    body: "We use the following third-party services that may process data on your behalf: Google Analytics (analytics), Google Tag Manager (tag management), Meta Pixel (advertising), and Cal.com (call booking). Each service operates under its own privacy policy. Links to their respective policies are available on their websites.",
   },
   {
     heading: "Data retention",

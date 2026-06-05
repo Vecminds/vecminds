@@ -62,7 +62,7 @@ export default function CookieBanner() {
         {/* Body */}
         <p className="text-white/60 text-sm leading-relaxed font-inter mb-4">
           We use cookies for analytics (GA4), advertising (Meta Pixel), and
-          live chat (Tawk.to). Bookings go through Cal.com.{" "}
+          bookings (Cal.com).{" "}
           <Link
             href="/privacy-policy"
             className="text-white/80 underline underline-offset-2 hover:text-white transition-colors"

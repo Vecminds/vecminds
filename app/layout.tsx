@@ -215,7 +215,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" />
-        <link rel="preconnect" href="https://embed.tawk.to" />
 
         {/* SVG favicon (scales perfectly at any resolution) */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
