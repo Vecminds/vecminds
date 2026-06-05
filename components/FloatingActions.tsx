@@ -166,6 +166,7 @@ export default function FloatingActions() {
       localStorage.removeItem(UNREAD_KEY);
       document.title = originalTitleRef.current;
       hideTawkMinimizeIframe();
+      api.showWidget?.();
       api.maximize?.();
     }
   };
@@ -233,7 +234,6 @@ export default function FloatingActions() {
                   : "pointer-events-none translate-x-2 opacity-0"
               }`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png"
                 alt=""
