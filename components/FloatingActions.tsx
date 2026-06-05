@@ -39,7 +39,7 @@ declare global {
   }
 }
 
-const WHATSAPP_URL = "https://wa.me/977976638077";
+const WHATSAPP_URL = "https://wa.me/9779766388077?text=Hello%20Vecminds%20Team!%20I%20have%20a%20question%20about%20your%20services.";
 const UNREAD_KEY = "vecminds_tawk_unread";
 
 // Safety net: hides the Tawk launcher bubble iframe (≤70px wide) if the
