@@ -25,10 +25,10 @@ const faqs = [
     q: "How quickly can you get started?",
     a: "We usually send an initial read within 48 hours of your first message. Depending on current capacity, we can kick off discovery within one to two weeks of agreeing on scope. We're always upfront about availability, so you'll never get false urgency from us.",
   },
-  {
-    q: "What industries are you a good fit for?",
-    a: "We do our best work on problems with real operational stakes: complex systems, meaningful workflows, and actual data. We work most often with FinTech, Healthcare, E-commerce, Logistics, and professional services teams. The deciding factor is the challenge, not the vertical. If your system is complex and your team is serious about solving it, we'd like to hear from you.",
-  },
+  // {
+  //   q: "What industries are you a good fit for?",
+  //   a: "We do our best work on problems with real operational stakes: complex systems, meaningful workflows, and actual data. We work most often with FinTech, Healthcare, E-commerce, Logistics, and professional services teams. The deciding factor is the challenge, not the vertical. If your system is complex and your team is serious about solving it, we'd like to hear from you.",
+  // },
   {
     q: "Do you work with non-technical founders?",
     a: "Often. We turn fuzzy product ideas into clear, shippable specs, push back where it matters, and only build what survives that pressure. You stay close to the work without ever needing to read a pull request.",
