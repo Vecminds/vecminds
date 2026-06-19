@@ -102,6 +102,33 @@ export default function ServicesSection() {
             )
           })}
         </div>
+
+        <div className="mt-4 rounded-2xl bg-white border border-black/5 px-6 sm:px-8 py-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+          {[
+            "Fixed-fee discovery",
+            "Monthly engagement, not timesheets",
+            "No surprise change-orders",
+          ].map((point) => (
+            <span
+              key={point}
+              className="inline-flex items-center gap-2 text-black/65 text-sm"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4 shrink-0 text-[#2754D9]"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              {point}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   )

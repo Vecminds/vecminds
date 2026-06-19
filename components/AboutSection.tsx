@@ -22,7 +22,7 @@ const principles = [
   {
     n: "05",
     title: "AI where it earns its place.",
-    body: "We add LLMs, RAG, and AI agents only where they cut real operational cost for you, never as demo-day decoration.",
+    body: "We add LLMs, RAG, and AI agents only where they cut real operational work, and we'll tell you when they won't, instead of shipping demo-day decoration.",
   },
   {
     n: "06",

@@ -12,7 +12,7 @@ const steps = [
   {
     n: "03",
     title: "Iterative build",
-    body: "Weekly demos, a shared backlog, and direct access to the engineers doing the work. You see real progress from week one.",
+    body: "Weekly demos and a shared backlog mean you see working software every week, with direct access to the engineers building it, so there are no surprises at the end.",
   },
   {
     n: "04",
