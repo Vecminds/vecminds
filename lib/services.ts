@@ -183,7 +183,7 @@ export const SERVICES: Service[] = [
     title: "AI Development & Automation",
     eyebrow: "Service 02",
     cardBody:
-      "We build LLM apps, RAG pipelines, and automation that you measure in hours saved, not demos watched. If it does not cut real work, it does not ship.",
+      "We build LLM apps, RAG systems, and automation that you measure in hours saved, not demos watched. If it does not cut real work, we do not ship.",
     tags: [
       "LLM/AI Applications",
       "RAG Systems",

@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       <ServicesSection />
       <TechStackSection />
-      <DeliveryModelsSection />
+      {/* <DeliveryModelsSection /> */}
       <ProcessSection />
       {/* <WorkSection /> */}
       <TestimonialsSection />

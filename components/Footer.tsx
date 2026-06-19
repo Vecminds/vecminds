@@ -77,23 +77,27 @@ export default function Footer() {
             </div>
             <div className="flex flex-col md:items-end gap-6">
               <p className="text-white/60 text-base md:text-lg max-w-sm md:text-right">
-                Tell us what you&apos;re building. We&apos;ll come back with a
-                sharp plan, a small team, and a realistic timeline, usually
-                within 48 hours.
+                Send us what you&apos;re building. Within 48 hours
+                we&apos;ll write back with a sharp, honest read on it,
+                no call required.
               </p>
-              <div className="flex items-center gap-3">
-                <CalComButton className="inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200">
-                  Book a Call
+              <div className="flex flex-col md:items-end gap-3">
+                <a
+                  href="mailto:info@vecminds.com?subject=New%20project"
+                  className="inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200"
+                >
+                  Send us your project
                   <span className="bg-black rounded-full p-2 flex items-center justify-center">
                     <ArrowRight className="w-4 h-4 text-white" />
                   </span>
-                </CalComButton>
-                <a
-                  href="mailto:info@vecminds.com"
-                  className="inline-flex items-center text-white text-base font-medium px-6 py-3 rounded-full border border-white/20 hover:bg-white/5 transition-colors duration-200"
-                >
-                  Email us
                 </a>
+                <p className="text-white/50 text-sm">
+                  No call required, but if you&apos;d rather talk,{" "}
+                  <CalComButton className="underline underline-offset-2 hover:text-white transition-colors duration-200">
+                    here&apos;s the link
+                  </CalComButton>
+                  .
+                </p>
               </div>
             </div>
           </div>
@@ -101,9 +105,10 @@ export default function Footer() {
           {/* Risk reversal */}
           <div className="mt-10 pt-6 border-t border-white/15 flex flex-wrap items-center gap-x-6 gap-y-2">
             {[
-              "Start with a small, fixed-scope discovery",
+              "A free, written read within 48 hours, no call required",
+              "Paid discovery is optional: a small fixed fee, credited toward the build",
+              "You keep the plan even if you don't build with us",
               "No long lock-in contracts",
-              "You own the code, on terms agreed up front",
             ].map((point) => (
               <span
                 key={point}

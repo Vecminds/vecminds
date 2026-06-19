@@ -39,8 +39,9 @@ export default function HeroSection() {
               <span aria-hidden="true">
                 Software that ships.
                 <br />
-                AI that pays off.
-              </span>
+                AI only where it earns its place.  {/* AI that pays off. */}
+              </span> 
+              
             </h1>
             <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">
               We&apos;re a small team of engineers. You bring the idea
@@ -67,7 +68,7 @@ export default function HeroSection() {
             </div>
 
             {/* Trust strip — compact proof under the CTAs */}
-            <div className="mt-7 inline-flex items-center gap-x-5 gap-y-2 flex-wrap bg-white/65 backdrop-blur-sm border border-black/10 rounded-xl px-5 py-3">
+            {/* <div className="mt-7 inline-flex items-center gap-x-5 gap-y-2 flex-wrap bg-white/65 backdrop-blur-sm border border-black/10 rounded-xl px-5 py-3">
               {TRUST_STATS.map((s, i) => (
                 <div key={s.label} className="flex items-center gap-5">
                   {i > 0 && (
@@ -86,7 +87,7 @@ export default function HeroSection() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
