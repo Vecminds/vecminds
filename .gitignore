@@ -46,5 +46,7 @@ next-env.d.ts
 logs
 *.log
 
+.docs/
+
 # OS generated files
 Thumbs.db
