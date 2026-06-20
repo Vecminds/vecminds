@@ -11,8 +11,8 @@ const principles = [
   },
   {
     n: "03",
-    title: "Small teams, deep ownership.",
-    body: "You get two to four engineers per project. The same people who write the plan write the code.",
+    title: "One team, deep ownership.",
+    body: "The same people who write the plan write the code, and you work directly with them throughout.",
   },
   {
     n: "04",
@@ -42,9 +42,9 @@ export default function AboutSection() {
               className="text-black text-5xl md:text-6xl font-medium leading-none"
               style={{ letterSpacing: "-0.04em" }}
             >
-              A studio,
+              We build it,
               <br />
-              not an agency.
+              and we own it.
             </h2>
           </div>
           <div className="md:col-span-7 space-y-6">
@@ -56,7 +56,7 @@ export default function AboutSection() {
               products you ship feel as good as they perform.
             </p>
             <p className="text-black/60 text-base md:text-lg leading-relaxed max-w-xl font-inter">
-              Vecminds Technologies is a small software development company of
+              Vecminds Technologies is a software development company of
               engineers and designers from product, platform, and AI
               backgrounds. We&apos;d rather ship one thing properly than juggle ten
               things badly. You work directly with the people building your

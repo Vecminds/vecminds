@@ -19,13 +19,13 @@ export default function ServicesSection() {
           <div>
             <p className="text-black/60 text-sm mb-2">Services</p>
             <h2 className="text-black text-5xl md:text-6xl font-medium leading-none" style={{ letterSpacing: '-0.04em' }}>
-              Two things.
+              What we actually do,
               <br />
-              Done properly.
+              and do best.
             </h2>
           </div>
           <p className="text-black/60 text-base max-w-sm leading-relaxed font-inter">
-            We go deep on two services instead of dabbling in ten. Most projects use both: custom software you can ship, with AI built in only where it pulls its weight.
+            Custom software and AI. Most projects use both: software you can ship, with AI added only where it earns its place.
           </p>
         </div>
 

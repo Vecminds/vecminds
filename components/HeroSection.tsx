@@ -40,14 +40,13 @@ export default function HeroSection() {
                 Software that ships.
                 <br />
                 AI only where it earns its place.  {/* AI that pays off. */}
-              </span> 
-              
+              </span>
             </h1>
             <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">
-              We&apos;re a small team of engineers. You bring the idea
-              or the messy problem. We build the custom software, AI, and
-              automation that ships fast and keeps paying off long after we
-              hand it over.
+              One team owns your product end to end. You bring the idea
+              or the messy problem, and work directly with the engineers
+              who build the custom software, AI, and automation that ships
+              fast and keeps paying off long after we hand it over.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
