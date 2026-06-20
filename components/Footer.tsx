@@ -84,7 +84,7 @@ export default function Footer() {
               <div className="flex flex-col md:items-end gap-3">
                 <a
                   href="mailto:info@vecminds.com?subject=New%20project"
-                  className="inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200"
+                  className="self-start md:self-auto inline-flex items-center gap-3 bg-white text-black text-base font-medium pl-7 pr-2 py-2 rounded-full hover:bg-white/90 transition-colors duration-200"
                 >
                   Send us your project
                   <span className="bg-black rounded-full p-2 flex items-center justify-center">
