@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import ConsentScripts from "@/components/ConsentScripts";
 import CookieBanner from "@/components/CookieBanner";
+import { GTM_ID } from "@/lib/integrations";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -244,6 +245,15 @@ export default function RootLayout({
       </head>
 
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <ConsentScripts />
         <CookieBanner />
         {children}
