@@ -35,11 +35,11 @@ export default function HeroSection() {
               className="text-black text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-4"
               style={{ letterSpacing: "-0.04em" }}
             >
-              <span className="sr-only">Vecminds Technologies: AI and custom software development company for ambitious teams</span>
+              <span className="sr-only">Vecminds Technologies: AI and custom software development company that owns what it ships</span>
               <span aria-hidden="true">
                 Software that ships.
                 <br />
-                AI only where it earns its place.  {/* AI that pays off. */}
+                AI only where it earns its place.
               </span>
             </h1>
             <p className="text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed font-inter">

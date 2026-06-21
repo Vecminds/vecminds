@@ -145,9 +145,8 @@ export default function Footer() {
               />
             </a>
             <p className="text-black/60 text-sm leading-relaxed max-w-xs mb-6">
-              A focused software development company building AI-native
-              products, automation, and production-grade software for ambitious
-              teams.
+              A focused software development company. We build custom
+              software and AI, and own what we ship end to end.
             </p>
             <div className="flex items-center gap-2">
               {socials.map((s) => (

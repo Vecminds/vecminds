@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Script from "next/script";
+// @ts-expect-error -- CSS imported for side effects in Next.js
 import "./globals.css";
 import ConsentScripts from "@/components/ConsentScripts";
 import CookieBanner from "@/components/CookieBanner";
@@ -23,9 +24,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vecminds.com"),
-  title: "Custom Software & AI Development Company | Vecminds",
+  title: "Custom Software & AI Development Company | Vecminds Technologies",
   description:
-    "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
+    "Custom software and AI development company. One team that owns your product end to end, building software and automation that ships fast.",
   keywords: [
     "custom software development",
     "software development company",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
+      "Custom software and AI development company. One team that owns your product end to end, building software and automation that ships fast.",
     url: "https://www.vecminds.com",
     siteName: "Vecminds Technologies",
     images: [
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vecminds Technologies | Custom Software & AI Development Company",
     description:
-      "Custom software and AI development company. A small engineering team building software and automation that ships fast and keeps paying off.",
+      "Custom software and AI development company. One team that owns your product end to end, building software and automation that ships fast.",
     images: ["/og-image.png"],
     site: "@vecminds",
     creator: "@vecminds",
@@ -111,7 +112,7 @@ const organizationSchema = {
   image: "https://www.vecminds.com/og-image.png",
   email: "info@vecminds.com",
   description:
-    "Custom software and AI development company building AI-native products, LLM and automation systems, and full-stack software for growing teams.",
+    "Custom software and AI development company. We build custom software, AI-native products, LLM applications, and workflow automation, and own what we ship end to end.",
   areaServed: "Worldwide",
   contactPoint: {
     "@type": "ContactPoint",
