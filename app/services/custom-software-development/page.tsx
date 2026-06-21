@@ -68,7 +68,7 @@ export default function CustomSoftwareDevelopmentPage() {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.vecminds.com/#services",
+        item: "https://www.vecminds.com/services",
       },
       { "@type": "ListItem", position: 3, name: service.shortName, item: canonical },
     ],

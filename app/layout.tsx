@@ -180,7 +180,7 @@ const servicesListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Vecminds Services",
-  url: "https://www.vecminds.com/#services",
+  url: "https://www.vecminds.com/services",
   itemListElement: [
     {
       "@type": "ListItem",
