@@ -4,12 +4,9 @@ import { useState, useEffect } from "react";
 import Script from "next/script";
 import {
   GA_MEASUREMENT_ID,
-  GTM_ID,
   META_PIXEL_ID,
 } from "@/lib/integrations";
-
-export const CONSENT_KEY = "vecminds_cookie_consent";
-export const CONSENT_EVENT = "vecminds:consent";
+import { CONSENT_KEY, CONSENT_EVENT } from "@/lib/consent";
 
 export default function ConsentScripts() {
   const [consented, setConsented] = useState(false);
@@ -37,15 +34,6 @@ export default function ConsentScripts() {
 function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','${GA_MEASUREMENT_ID}');`}
-      </Script>
-
-      {/* GTM */}
-      <Script id="gtm-script" strategy="afterInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
       </Script>
 
       {/* Meta Pixel */}

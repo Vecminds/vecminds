@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { CONSENT_KEY, CONSENT_EVENT } from "./ConsentScripts";
+import { CONSENT_KEY, CONSENT_EVENT } from "@/lib/consent";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -17,6 +17,12 @@ export default function CookieBanner() {
 
   const accept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
+    window.gtag?.("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+    });
     window.dispatchEvent(new Event(CONSENT_EVENT));
     setVisible(false);
   };
