@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Script from "next/script";
-// @ts-expect-error -- CSS imported for side effects in Next.js
 import "./globals.css";
 import ConsentScripts from "@/components/ConsentScripts";
 import CookieBanner from "@/components/CookieBanner";
